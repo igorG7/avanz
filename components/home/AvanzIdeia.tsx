@@ -36,7 +36,8 @@ export function AvanzIdeia() {
           <div className="md:sticky md:top-24 md:self-start">
             <span className="eyebrow">A Avanz em uma ideia</span>
             <h2 className="section-title mt-3">
-              Organizamos o caminho da compra.
+              Organizamos o <span className="text-orange">caminho</span> da
+              compra.
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
               Entendemos seu cenário, filtramos opções coerentes e explicamos o

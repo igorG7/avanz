@@ -10,7 +10,7 @@ export function Footer() {
 
   return (
     <footer className="bg-navy-3 text-white/80">
-      <div className="container-content grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="container-content grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr]">
         <div>
           <Image
             src="/logo-recorte.png"
@@ -100,16 +100,12 @@ export function Footer() {
                 Avanz Imóveis
               </a>
             </li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white">
-            Localização
-          </h3>
-          <ul className="mt-4 space-y-2.5 text-sm">
-            <li className="flex items-start gap-2.5">
-              <Icon name="map" size={16} className="mt-0.5 shrink-0 text-orange" />
+            <li className="flex items-start gap-2.5 pt-1">
+              <Icon
+                name="map"
+                size={16}
+                className="mt-0.5 shrink-0 text-orange"
+              />
               <span className="leading-relaxed">
                 Rua Guaraciaba Passos, 1050
                 <br />

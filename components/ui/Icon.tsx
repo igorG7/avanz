@@ -26,7 +26,9 @@ export type IconName =
   | "users"
   | "key"
   | "mail"
-  | "sliders";
+  | "sliders"
+  | "share"
+  | "calendar";
 
 const paths: Record<IconName, ReactElement> = {
   whatsapp: (
@@ -173,6 +175,23 @@ const paths: Record<IconName, ReactElement> = {
       <line x1="5" y1="22" x2="20" y2="22" />
       <line x1="26" y1="22" x2="27" y2="22" />
       <circle cx="23" cy="22" r="2.8" />
+    </>
+  ),
+  share: (
+    <>
+      <circle cx="9" cy="16" r="3" />
+      <circle cx="23" cy="8" r="3" />
+      <circle cx="23" cy="24" r="3" />
+      <line x1="11.6" y1="14.6" x2="20.4" y2="9.4" />
+      <line x1="11.6" y1="17.4" x2="20.4" y2="22.6" />
+    </>
+  ),
+  calendar: (
+    <>
+      <rect x="5" y="7" width="22" height="20" rx="2.5" />
+      <line x1="10" y1="4" x2="10" y2="9" />
+      <line x1="22" y1="4" x2="22" y2="9" />
+      <line x1="5" y1="13" x2="27" y2="13" />
     </>
   ),
 };

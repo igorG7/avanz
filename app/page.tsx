@@ -2,9 +2,8 @@ import { Header } from "@/components/layout/Header";
 import { Hero } from "@/components/home/Hero";
 import { AvanzIdeia } from "@/components/home/AvanzIdeia";
 import { SobreNos } from "@/components/home/SobreNos";
-import { Historia } from "@/components/home/Historia";
-import { Valores } from "@/components/home/Valores";
 import { Pillars } from "@/components/shared/Pillars";
+import { Testimonials } from "@/components/shared/Testimonials";
 import { ImoveisGrid } from "@/components/imoveis/ImoveisGrid";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { Contato } from "@/components/home/Contato";
@@ -13,7 +12,7 @@ import { faqItems } from "@/lib/content/faq";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloating } from "@/components/layout/WhatsAppFloating";
 import { imoveis } from "@/lib/content/imoveis";
-import type { Pillar } from "@/lib/content/types";
+import type { Pillar, Depoimento } from "@/lib/content/types";
 
 const pillars: Pillar[] = [
   {
@@ -61,6 +60,27 @@ const process = [
   },
 ];
 
+const depoimentos: Depoimento[] = [
+  {
+    quote:
+      "Cheguei perdido com 30 anúncios na cabeça. Saí com 3 opções que faziam sentido pro meu bolso.",
+    nome: "Rafael C.",
+    contexto: "comprador de lote em Mateus Leme",
+  },
+  {
+    quote:
+      "Foi a primeira vez que alguém explicou os riscos antes de vender. Decisão sem medo.",
+    nome: "Patrícia M.",
+    contexto: "compradora de chácara em Igarapé",
+  },
+  {
+    quote:
+      "Financiamento próprio resolveu o que o banco não fez. Em duas semanas estava com a escritura.",
+    nome: "Eduardo S.",
+    contexto: "comprador de lote em Betim",
+  },
+];
+
 export default function Home() {
   const destaques = imoveis.slice(0, 3);
 
@@ -92,16 +112,11 @@ export default function Home() {
 
         <AvanzIdeia />
 
-        <ProcessSteps steps={process} />
-
-        <SobreNos />
-
-        <Historia />
-
-        <Valores />
+        <ImoveisGrid imoveis={destaques} />
 
         <Pillars
           pillars={pillars}
+          variant="featured"
           eyebrow="O que você encontra aqui"
           title={
             <>
@@ -109,10 +124,14 @@ export default function Home() {
               <span className="text-orange">seu perfil.</span>
             </>
           }
-          description="Quatro frentes que a Avanz entrega com consistência."
+          description="Quatro frentes que a Avanz entrega com consistência — uma delas é o que nos separa do mercado."
         />
 
-        <ImoveisGrid imoveis={destaques} />
+        <ProcessSteps steps={process} />
+
+        <Testimonials depoimentos={depoimentos} />
+
+        <SobreNos />
 
         <Contato />
 
