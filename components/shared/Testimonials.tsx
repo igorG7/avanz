@@ -36,12 +36,12 @@ export function Testimonials({
           {depoimentos.map((d) => (
             <figure
               key={d.nome}
-              className="relative isolate flex flex-col rounded-card border border-line bg-offwhite p-7 transition hover:-translate-y-0.5 hover:border-orange/40 hover:shadow-card"
+              className="relative isolate flex min-w-0 flex-col overflow-hidden rounded-card border border-line bg-offwhite p-7 transition hover:-translate-y-0.5 hover:border-orange/40 hover:shadow-card"
             >
               {/* Decorative quote mark in the corner */}
               <span
                 aria-hidden
-                className="absolute right-5 top-3 select-none font-display text-6xl font-bold leading-none text-orange/15"
+                className="absolute right-5 top-3 select-none font-display text-6xl font-bold leading-none text-orange/35"
               >
                 “
               </span>
@@ -54,17 +54,17 @@ export function Testimonials({
                 >
                   {getInitials(d.nome)}
                 </span>
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <div className="font-display font-semibold text-navy">
                     {d.nome}
                   </div>
-                  <div className="mt-0.5 flex items-center gap-1.5 text-xs text-muted">
+                  <div className="mt-0.5 flex min-w-0 items-center gap-1.5 text-xs text-muted">
                     <Icon
                       name="map"
                       size={12}
                       className="shrink-0 text-orange-deep"
                     />
-                    <span className="truncate">{d.contexto}</span>
+                    <span className="min-w-0 truncate">{d.contexto}</span>
                   </div>
                 </div>
               </header>

@@ -43,7 +43,7 @@ export function Galeria({ fotos, alt, badge }: Props) {
         <div
           role="tablist"
           aria-label="Galeria de fotos"
-          className="mt-3 grid grid-cols-4 gap-2 sm:gap-3"
+          className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-3"
         >
           {fotos.slice(0, 8).map((src, i) => {
             const isActive = i === selected;

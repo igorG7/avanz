@@ -15,9 +15,25 @@ function parsePreco(preco: string): number {
   return parseInt(digits, 10) || 0;
 }
 
+function parseArea(area: string): number {
+  const cleaned = area.replace(/\./g, "");
+  const match = cleaned.match(/\d+/);
+  return match ? parseInt(match[0], 10) : 0;
+}
+
 function formatPreco(value: number): string {
   return value.toLocaleString("pt-BR");
 }
+
+type SortKey = "padrao" | "preco-asc" | "preco-desc" | "area-desc" | "area-asc";
+
+const SORT_OPTIONS: { value: SortKey; label: string }[] = [
+  { value: "padrao", label: "Padrão" },
+  { value: "preco-asc", label: "Menor preço" },
+  { value: "preco-desc", label: "Maior preço" },
+  { value: "area-desc", label: "Maior área" },
+  { value: "area-asc", label: "Menor área" },
+];
 
 type PillProps = {
   active?: boolean;
@@ -63,6 +79,7 @@ export function ImoveisFiltro({ imoveis }: Props) {
   const [selectedTipos, setSelectedTipos] = useState<string[]>([]);
   const [precoMin, setPrecoMin] = useState("");
   const [precoMax, setPrecoMax] = useState("");
+  const [sort, setSort] = useState<SortKey>("padrao");
 
   const toggleCidade = (c: string) =>
     setSelectedCidades((p) =>
@@ -85,6 +102,26 @@ export function ImoveisFiltro({ imoveis }: Props) {
       return true;
     });
   }, [imoveis, selectedCidades, selectedTipos, precoMin, precoMax]);
+
+  const sorted = useMemo(() => {
+    if (sort === "padrao") return filtered;
+    const list = [...filtered];
+    switch (sort) {
+      case "preco-asc":
+        list.sort((a, b) => parsePreco(a.preco) - parsePreco(b.preco));
+        break;
+      case "preco-desc":
+        list.sort((a, b) => parsePreco(b.preco) - parsePreco(a.preco));
+        break;
+      case "area-asc":
+        list.sort((a, b) => parseArea(a.area) - parseArea(b.area));
+        break;
+      case "area-desc":
+        list.sort((a, b) => parseArea(b.area) - parseArea(a.area));
+        break;
+    }
+    return list;
+  }, [filtered, sort]);
 
   const hasFilters =
     selectedCidades.length > 0 ||
@@ -189,15 +226,35 @@ export function ImoveisFiltro({ imoveis }: Props) {
 
       {/* Results */}
       <div>
-        <p className="mb-6 text-sm text-muted">
-          {filtered.length === 0
-            ? "Nenhum imóvel encontrado"
-            : filtered.length === 1
-            ? "1 imóvel encontrado"
-            : `${filtered.length} imóveis encontrados`}
-        </p>
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm text-muted">
+            {sorted.length === 0
+              ? "Nenhum imóvel encontrado"
+              : sorted.length === 1
+              ? "1 imóvel encontrado"
+              : `${sorted.length} imóveis encontrados`}
+          </p>
+          {sorted.length > 1 && (
+            <label className="flex items-center gap-2 text-xs text-muted">
+              <span className="font-semibold uppercase tracking-widest">
+                Ordenar
+              </span>
+              <select
+                value={sort}
+                onChange={(e) => setSort(e.target.value as SortKey)}
+                className="rounded-card border border-line bg-white px-3 py-1.5 text-sm font-semibold text-navy outline-none transition focus:border-orange focus:ring-2 focus:ring-orange/20"
+              >
+                {SORT_OPTIONS.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+        </div>
 
-        {filtered.length === 0 ? (
+        {sorted.length === 0 ? (
           <div className="rounded-card border border-line bg-white p-10 text-center">
             <p className="text-muted">
               Nenhum imóvel bate com os filtros atuais.
@@ -213,7 +270,7 @@ export function ImoveisFiltro({ imoveis }: Props) {
           </div>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {filtered.map((im) => (
+            {sorted.map((im) => (
               <Link
                 key={im.slug}
                 href={`/imoveis/${im.slug}`}

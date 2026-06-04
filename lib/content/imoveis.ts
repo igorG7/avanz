@@ -124,3 +124,18 @@ export const imoveis: Imovel[] = [
 export function getImovel(slug: string): Imovel | undefined {
   return imoveis.find((i) => i.slug === slug);
 }
+
+export function getSimilares(slug: string, limit = 3): Imovel[] {
+  const atual = getImovel(slug);
+  if (!atual) return [];
+  const outros = imoveis.filter((i) => i.slug !== slug);
+  // Priority: same cidade → same tipo → any
+  const mesmaCidade = outros.filter((i) => i.cidade === atual.cidade);
+  const mesmoTipo = outros.filter(
+    (i) => i.tipo === atual.tipo && i.cidade !== atual.cidade,
+  );
+  const resto = outros.filter(
+    (i) => i.cidade !== atual.cidade && i.tipo !== atual.tipo,
+  );
+  return [...mesmaCidade, ...mesmoTipo, ...resto].slice(0, limit);
+}

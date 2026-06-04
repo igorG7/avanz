@@ -90,14 +90,22 @@ export function Header() {
         </div>
       </div>
 
-      {open && (
-        <nav className="border-t border-white/10 bg-navy md:hidden">
+      <nav
+        aria-hidden={!open}
+        className={`grid bg-navy transition-all duration-300 ease-in-out md:hidden ${
+          open
+            ? "grid-rows-[1fr] border-t border-white/10 opacity-100"
+            : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
           <ul className="container-content flex flex-col py-3">
             {NAV.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
+                  tabIndex={open ? 0 : -1}
                   className="block py-3 text-sm font-medium text-white/85 transition hover:text-white"
                 >
                   {item.label}
@@ -105,8 +113,8 @@ export function Header() {
               </li>
             ))}
           </ul>
-        </nav>
-      )}
+        </div>
+      </nav>
     </header>
   );
 }

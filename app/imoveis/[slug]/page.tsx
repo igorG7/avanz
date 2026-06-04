@@ -4,11 +4,11 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloating } from "@/components/layout/WhatsAppFloating";
-import { FinalCTA } from "@/components/shared/FinalCTA";
 import { Galeria } from "@/components/imoveis/Galeria";
+import { ImoveisGrid } from "@/components/imoveis/ImoveisGrid";
 import { Icon } from "@/components/ui/Icon";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
-import { imoveis, getImovel } from "@/lib/content/imoveis";
+import { imoveis, getImovel, getSimilares } from "@/lib/content/imoveis";
 
 type Params = { slug: string };
 
@@ -83,6 +83,8 @@ export default async function ImovelPage({
     imovel.fotos && imovel.fotos.length > 0
       ? imovel.fotos
       : Array(4).fill(imovel.foto);
+
+  const similares = getSimilares(imovel.slug, 3);
 
   return (
     <>
@@ -177,23 +179,25 @@ export default async function ImovelPage({
                   Localização
                 </h2>
                 <div className="mt-5 overflow-hidden rounded-card border border-line bg-white">
-                  <div className="flex items-start gap-4 p-6 sm:p-7">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-card bg-navy text-orange">
-                      <Icon name="map" size={22} />
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <div className="font-display text-lg font-bold text-navy sm:text-xl">
-                        {imovel.bairro}
+                  <div className="p-6 sm:p-7">
+                    <div className="flex items-start gap-4">
+                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-card bg-navy text-orange">
+                        <Icon name="map" size={22} />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <div className="font-display text-lg font-bold text-navy sm:text-xl">
+                          {imovel.bairro}
+                        </div>
+                        <div className="mt-1 text-sm text-muted">
+                          {imovel.cidade} · Minas Gerais
+                        </div>
                       </div>
-                      <div className="mt-1 text-sm text-muted">
-                        {imovel.cidade} · Minas Gerais
-                      </div>
-                      <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-                        Região Metropolitana de Belo Horizonte. Endereço exato
-                        compartilhado durante a visita — proteção de
-                        privacidade até o primeiro contato.
-                      </p>
                     </div>
+                    <p className="mt-4 text-sm leading-relaxed text-muted sm:ml-16 sm:text-base">
+                      Região Metropolitana de Belo Horizonte. Endereço exato
+                      compartilhado durante a visita — proteção de privacidade
+                      até o primeiro contato.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -231,7 +235,7 @@ export default async function ImovelPage({
             </div>
 
             {/* Sidebar */}
-            <aside className="lg:sticky lg:top-24 lg:self-start">
+            <aside>
               <div className="rounded-card border border-line bg-white p-6 shadow-card">
                 {/* Ref pill */}
                 <div className="flex items-center justify-between gap-3">
@@ -323,12 +327,14 @@ export default async function ImovelPage({
           </div>
         </section>
 
-        <FinalCTA
-          title="Quer ver outros imóveis parecidos?"
-          body="A curadoria Avanz seleciona 3 a 5 opções alinhadas ao seu objetivo. Sem ruído."
-          ctaLabel="Conversar no WhatsApp"
-          ctaMessage="Olá! Vi um imóvel no site e quero ver opções parecidas. Pode me ajudar?"
-        />
+        {similares.length > 0 && (
+          <ImoveisGrid
+            imoveis={similares}
+            eyebrow="Mais opções"
+            title={`Outros imóveis em ${imovel.cidade} e região`}
+            intro="Selecionados na curadoria Avanz — mesma região ou mesmo perfil."
+          />
+        )}
       </main>
       <Footer />
       <WhatsAppFloating message={ctaMessage} />
