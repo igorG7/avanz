@@ -19,11 +19,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL("https://avanzimoveis.com"),
   title: {
-    default: "Avanz Imóveis — Consultoria imobiliária na RMBH",
+    default: "Avanz Imóveis, Consultoria imobiliária na RMBH",
     template: "%s · Avanz Imóveis",
   },
   description:
-    "Consultoria imobiliária com financiamento próprio na RMBH. Lotes, sítios e chácaras com direção clara — entender para atender.",
+    "Consultoria imobiliária com financiamento próprio na RMBH. Lotes, sítios e chácaras com direção clara, entender para atender.",
   openGraph: {
     type: "website",
     siteName: "Avanz Imóveis",

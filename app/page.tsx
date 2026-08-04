@@ -18,7 +18,7 @@ const pillars: Pillar[] = [
   {
     icon: "wallet",
     title: "Venda com financiamento próprio",
-    body: "Condições pensadas para viabilizar a compra — do primeiro imóvel ao investimento.",
+    body: "Condições pensadas para viabilizar a compra, do primeiro imóvel ao investimento.",
   },
   {
     icon: "compass",
@@ -97,13 +97,13 @@ export default function Home() {
               <span className="text-orange-bright">direção</span>.
             </>
           }
-          subhead="A Avanz trabalha com foco em terrenos e loteamentos, sem limitar seu perfil: do primeiro imóvel ao investimento — sempre com transparência e atenção."
+          subhead="A Avanz trabalha com foco em terrenos e loteamentos, sem limitar seu perfil: do primeiro imóvel ao investimento, sempre com transparência e atenção."
           ctaLabel="Falar agora"
           ctaMessage="Olá! Vim pelo site da Avanz. Quero entender as opções disponíveis."
           secondaryCtaLabel="Ver oportunidades"
           secondaryCtaHref="/imoveis"
           bullets={[
-            "Variedade — terrenos, MCMV, médio/alto padrão",
+            "Variedade, terrenos, MCMV, médio/alto padrão",
             "Informações pertinentes, sem enrolação",
             "Atendimento direto e transparente",
           ]}
@@ -120,11 +120,11 @@ export default function Home() {
           eyebrow="O que você encontra aqui"
           title={
             <>
-              Foco em terrenos e loteamentos — abertura pro{" "}
+              Foco em terrenos e loteamentos, abertura pro{" "}
               <span className="text-orange">seu perfil.</span>
             </>
           }
-          description="Quatro frentes que a Avanz entrega com consistência — uma delas é o que nos separa do mercado."
+          description="Quatro frentes que a Avanz entrega com consistência, uma delas é o que nos separa do mercado."
         />
 
         <ProcessSteps steps={process} />

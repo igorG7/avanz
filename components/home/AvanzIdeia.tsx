@@ -9,22 +9,22 @@ const NUMEROS: {
   {
     icon: "users",
     value: "+400 clientes",
-    label: "Famílias guiadas até a escritura com curadoria por perfil — não vendemos volume, conduzimos decisão.",
+    label: "Famílias guiadas até a escritura com curadoria por perfil, não vendemos volume, conduzimos decisão.",
   },
   {
     icon: "trending-up",
     value: "+9 anos",
-    label: "Quase uma década atuando na RMBH — a Avanz é a nova fase de uma marca já consolidada na região.",
+    label: "Quase uma década atuando na RMBH, a Avanz é a nova fase de uma marca já consolidada na região.",
   },
   {
     icon: "shield",
     value: "CRECI 8638-MG",
-    label: "Registro profissional ativo em Minas Gerais — atuação regulamentada e responsabilidade técnica em cada transação.",
+    label: "Registro profissional ativo em Minas Gerais, atuação regulamentada e responsabilidade técnica em cada transação.",
   },
   {
     icon: "map",
     value: "RMBH bairro a bairro",
-    label: "Expertise consolidada em terrenos, loteamentos, sítios e chácaras — conhecemos valorização, documentação e acesso de Mateus Leme, Igarapé, Betim e região.",
+    label: "Expertise consolidada em terrenos, loteamentos, sítios e chácaras, conhecemos valorização, documentação e acesso de Mateus Leme, Igarapé, Betim e região.",
   },
 ];
 
@@ -41,7 +41,7 @@ export function AvanzIdeia() {
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
               Entendemos seu cenário, filtramos opções coerentes e explicamos o
-              processo com transparência — do primeiro contato ao fechamento.
+              processo com transparência, do primeiro contato ao fechamento.
             </p>
           </div>
 

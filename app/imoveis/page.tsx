@@ -53,7 +53,7 @@ export default function ImoveisPage() {
               Imóveis disponíveis na <span className="text-orange-bright">RMBH</span>
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-              Lotes, sítios e chácaras selecionados — novos, oportunidades raras
+              Lotes, sítios e chácaras selecionados, novos, oportunidades raras
               ou parcerias diretas com proprietário. Confirme disponibilidade
               pelo WhatsApp.
             </p>

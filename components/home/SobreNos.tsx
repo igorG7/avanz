@@ -16,9 +16,9 @@ const MILESTONES: Milestone[] = [
     body: "Ivan Dias começa atendimento personalizado em terrenos e loteamentos na RMBH, com a marca pessoal Ivan Dias Imóveis.",
   },
   {
-    year: "2025",
+    year: "2023",
     title: "Estruturação como Avanz",
-    body: "A operação se transforma em marca corporativa: Avanz — de avanço, progresso, direção. Mesma essência, nova escala.",
+    body: "A operação se transforma em marca corporativa: Avanz, de avanço, progresso, direção. Mesma essência, nova escala.",
   },
   {
     year: "2026",
@@ -42,13 +42,13 @@ export function SobreNos() {
             <div className="mt-6 space-y-4 text-base leading-relaxed text-ink sm:text-lg">
               <p>
                 A Avanz Imóveis nasceu da convicção de que comprar um imóvel
-                não é uma transação — é uma decisão de vida. Operamos em Belo
+                não é uma transação, é uma decisão de vida. Operamos em Belo
                 Horizonte, Mateus Leme, Jaboticatubas e RMBH, com um modelo de
                 consultoria que coloca o atendimento como produto principal.
               </p>
               <p>
                 O mercado oferece volume. Falta direção. É aí que entramos:
-                filtramos, traduzimos, organizamos — para que você decida com
+                filtramos, traduzimos, organizamos, para que você decida com
                 clareza, sem ruído. Trabalhamos com terrenos, loteamentos, MCMV
                 e médio padrão, com opções de financiamento próprio.
               </p>
@@ -102,7 +102,7 @@ export function SobreNos() {
             </h3>
             <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
               Quase uma década no mercado imobiliário da RMBH consolidada em
-              uma marca pronta pra escalar — mantendo o que sempre nos definiu.
+              uma marca pronta pra escalar, mantendo o que sempre nos definiu.
             </p>
           </div>
 

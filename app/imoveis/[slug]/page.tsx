@@ -195,7 +195,7 @@ export default async function ImovelPage({
                     </div>
                     <p className="mt-4 text-sm leading-relaxed text-muted sm:ml-16 sm:text-base">
                       Região Metropolitana de Belo Horizonte. Endereço exato
-                      compartilhado durante a visita — proteção de privacidade
+                      compartilhado durante a visita, proteção de privacidade
                       até o primeiro contato.
                     </p>
                   </div>
@@ -208,7 +208,7 @@ export default async function ImovelPage({
                   Condições de pagamento
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-muted sm:text-base">
-                  Financiamento próprio Avanz — condições reais conversadas com
+                  Financiamento próprio Avanz, condições reais conversadas com
                   o consultor.
                 </p>
                 <ul className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -332,7 +332,7 @@ export default async function ImovelPage({
             imoveis={similares}
             eyebrow="Mais opções"
             title={`Outros imóveis em ${imovel.cidade} e região`}
-            intro="Selecionados na curadoria Avanz — mesma região ou mesmo perfil."
+            intro="Selecionados na curadoria Avanz, mesma região ou mesmo perfil."
           />
         )}
       </main>

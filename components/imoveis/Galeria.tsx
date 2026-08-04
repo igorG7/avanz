@@ -62,7 +62,7 @@ export function Galeria({ fotos, alt, badge }: Props) {
               >
                 <Image
                   src={src}
-                  alt={`${alt} — foto ${i + 1}`}
+                  alt={`${alt}, foto ${i + 1}`}
                   fill
                   sizes="(min-width: 1024px) 15vw, 25vw"
                   className="object-cover"

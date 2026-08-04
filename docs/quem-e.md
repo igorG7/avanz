@@ -17,7 +17,7 @@ Curadoria imobiliária com **financiamento próprio**, baseada na RMBH (Região 
 
 ## Origem
 - Evolução de **Ivan Dias Imóveis** (5 anos no mercado, marca pessoal do Ivan Dias Sr.)
-- Em 2025–2026 virou marca corporativa estruturada: **Avanz**
+- Em 2023 virou marca corporativa estruturada: **Avanz**
 - Significado: *avanço*, *progresso*, *direção*
 
 ---

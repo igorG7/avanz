@@ -85,7 +85,7 @@ export function QuickLeadForm({ variant = "hero" }: Props) {
             value={preferencias}
             onChange={(e) => setPreferencias(e.target.value)}
             className="mt-2 w-full rounded-card border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-orange focus:ring-2 focus:ring-orange/20"
-            placeholder="Conta o que você procura — região, valor, finalidade."
+            placeholder="Conta o que você procura, região, valor, finalidade."
           />
         </div>
 

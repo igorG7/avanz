@@ -20,8 +20,8 @@ export function Footer() {
             className="h-12 w-auto brightness-0 invert"
           />
           <p className="mt-5 max-w-sm text-sm leading-relaxed">
-            Consultoria imobiliária na RMBH. Direção clara na tomada de decisão
-            — entender para atender.
+            Consultoria imobiliária na RMBH. Direção clara na tomada de
+            decisão, entender para atender.
           </p>
           <a
             href={ctaLink}

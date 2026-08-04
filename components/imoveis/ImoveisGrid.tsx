@@ -16,7 +16,7 @@ export function ImoveisGrid({
   imoveis,
   eyebrow = "Oportunidades selecionadas",
   title = "Imóveis em destaque",
-  intro = "Seleção atualizada — novos, oportunidades raras ou parcerias diretas com proprietário. Confirme disponibilidade pelo WhatsApp.",
+  intro = "Seleção atualizada, novos, oportunidades raras ou parcerias diretas com proprietário. Confirme disponibilidade pelo WhatsApp.",
   showHeader = true,
   showLink = true,
 }: Props) {
