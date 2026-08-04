@@ -83,7 +83,7 @@ export function Contato() {
           {/* Right: form */}
           <div className="rounded-card border border-line bg-offwhite p-7 shadow-card md:p-8">
             <h3 className="font-display text-xl font-semibold text-navy">
-              Preencha e a gente retorna
+              Preencha e nós retornamos
             </h3>
             <p className="mt-2 text-sm text-muted">
               Nome, telefone e um resumo do que você busca. Sem cadastro
