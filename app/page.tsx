@@ -11,8 +11,9 @@ import { FAQ } from "@/components/shared/FAQ";
 import { faqItems } from "@/lib/content/faq";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloating } from "@/components/layout/WhatsAppFloating";
-import { imoveis } from "@/lib/content/imoveis";
+import { listProperties } from "@/lib/api/imoveis";
 import type { Pillar, Depoimento } from "@/lib/content/types";
+import { propertyToCard, type ImovelCardVM } from "@/lib/imoveis/view";
 
 const pillars: Pillar[] = [
   {
@@ -81,8 +82,8 @@ const depoimentos: Depoimento[] = [
   },
 ];
 
-export default function Home() {
-  const destaques = imoveis.slice(0, 3);
+export default async function Home() {
+  const destaques = await carregarDestaques();
 
   return (
     <>
@@ -157,4 +158,23 @@ export default function Home() {
       <WhatsAppFloating />
     </>
   );
+}
+
+// Destaques da carteira própria: prioriza os marcados como `featured` no painel
+// e completa com os mais recentes quando não houver três.
+async function carregarDestaques(): Promise<ImovelCardVM[]> {
+  const [featured, recentes] = await Promise.all([
+    listProperties({ featured: true, limit: 3 }),
+    listProperties({ limit: 6 }),
+  ]);
+
+  const lista = featured.ok ? [...featured.data.items] : [];
+  if (recentes.ok) {
+    for (const item of recentes.data.items) {
+      if (lista.length >= 3) break;
+      if (!lista.some((i) => i.id === item.id)) lista.push(item);
+    }
+  }
+
+  return lista.slice(0, 3).map(propertyToCard);
 }
