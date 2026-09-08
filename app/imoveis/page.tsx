@@ -24,6 +24,12 @@ import type {
   PropertyType,
 } from "@/lib/api/types";
 import {
+  comRetorno,
+  normalizeQuery,
+  queryString,
+  type SearchParams,
+} from "@/lib/imoveis/query";
+import {
   TIPO_LABEL,
   partnerUnitToCard,
   propertyToCard,
@@ -56,31 +62,6 @@ const ORDENS_PROPRIA = [
 
 const ORDENS_PARCEIRO = ORDENS_PROPRIA.filter((o) => !o.value.startsWith("area"));
 
-const CHAVES = [
-  "carteira",
-  "tipo",
-  "cidade",
-  "loteamento",
-  "precoMin",
-  "precoMax",
-  "areaMin",
-  "areaMax",
-  "ordem",
-  "pagina",
-] as const;
-
-type SearchParams = Record<string, string | string[] | undefined>;
-
-function normalizeQuery(raw: SearchParams): Record<string, string> {
-  const query: Record<string, string> = {};
-  for (const key of CHAVES) {
-    const value = raw[key];
-    const first = Array.isArray(value) ? value[0] : value;
-    if (first) query[key] = first;
-  }
-  return query;
-}
-
 function ordemValida<T extends string>(
   value: string | undefined,
   permitidas: readonly { value: string }[],
@@ -110,6 +91,12 @@ export default async function ImoveisPage({
     carteira === "propria"
       ? await carregarPropria(query, page)
       : await carregarParceiros(query, page);
+
+  const ret = queryString(query);
+  const cards = dados.cards.map((card) => ({
+    ...card,
+    href: comRetorno(card.href, ret),
+  }));
 
   return (
     <>
@@ -218,7 +205,7 @@ export default async function ImoveisPage({
                       )}
                     </div>
 
-                    {dados.cards.length === 0 ? (
+                    {cards.length === 0 ? (
                       <div className="rounded-card border border-line bg-white p-10 text-center">
                         <p className="text-muted">
                           Nenhum imóvel bate com os filtros atuais nesta
@@ -228,7 +215,7 @@ export default async function ImoveisPage({
                     ) : (
                       <>
                         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                          {dados.cards.map((card) => (
+                          {cards.map((card) => (
                             <ImovelCard key={card.key} imovel={card} />
                           ))}
                         </div>

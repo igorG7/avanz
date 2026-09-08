@@ -54,6 +54,9 @@ export type ImovelDetalheProps = {
   similares: ImovelCardVM[];
   similaresTitle: string;
   similaresIntro: string;
+  /** Volta para a vitrine no mesmo estado (aba, filtros e página) em que o visitante estava. */
+  voltarHref: string;
+  voltarLabel: string;
 };
 
 export function ImovelDetalhe({
@@ -76,6 +79,8 @@ export function ImovelDetalhe({
   similares,
   similaresTitle,
   similaresIntro,
+  voltarHref,
+  voltarLabel,
 }: ImovelDetalheProps) {
   const ref = refMensagem || referencia;
   const ctaMessage = `Olá! Tenho interesse no ${descricaoCurta} (ref ${ref}).`;
@@ -94,10 +99,20 @@ export function ImovelDetalhe({
       <Header />
       <main>
         <section className="bg-offwhite">
-          <div className="container-content pt-14 sm:pt-16">
+          <div className="container-content pt-10 sm:pt-12">
+            <Link
+              href={voltarHref}
+              className="inline-flex items-center gap-2 rounded-pill border border-line bg-white px-4 py-2 text-sm font-semibold text-navy shadow-card transition hover:border-orange/40 hover:text-orange-deep"
+            >
+              <span aria-hidden className="rotate-180">
+                <Icon name="arrow-right" size={14} />
+              </span>
+              {voltarLabel}
+            </Link>
+
             <nav
               aria-label="Caminho"
-              className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-muted"
+              className="mt-6 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-muted"
             >
               <Link href="/" className="hover:text-navy">
                 Início
@@ -105,7 +120,7 @@ export function ImovelDetalhe({
               <span aria-hidden className="text-base text-muted/60">
                 ›
               </span>
-              <Link href="/imoveis" className="hover:text-navy">
+              <Link href={voltarHref} className="hover:text-navy">
                 Imóveis
               </Link>
               <span aria-hidden className="text-base text-muted/60">

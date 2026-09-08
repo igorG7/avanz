@@ -5,6 +5,13 @@ import { ImovelDetalhe } from "@/components/imoveis/ImovelDetalhe";
 import { getPropertyBySlug, listProperties } from "@/lib/api/imoveis";
 import type { Property } from "@/lib/api/types";
 import {
+  RET_PARAM,
+  comRetorno,
+  hrefVitrine,
+  primeiro,
+  type SearchParams,
+} from "@/lib/imoveis/query";
+import {
   STATUS_LABEL,
   TIPO_LABEL,
   buildFichaTecnica,
@@ -36,10 +43,14 @@ export async function generateMetadata({
 
 export default async function ImovelPage({
   params,
+  searchParams,
 }: {
   params: Promise<Params>;
+  searchParams: Promise<SearchParams>;
 }) {
-  const { slug } = await params;
+  const [{ slug }, sp] = await Promise.all([params, searchParams]);
+  const ret = primeiro(sp[RET_PARAM]);
+  const voltarHref = hrefVitrine(ret, "propria");
   const res = await getPropertyBySlug(slug);
 
   if (!res.ok) {
@@ -53,7 +64,11 @@ export default async function ImovelPage({
     .sort((a, b) => Number(b.cover) - Number(a.cover) || a.order - b.order)
     .map((f) => f.url);
 
-  const similares = await carregarSimilares(imovel);
+  // O estado da vitrine segue junto nos similares, para a volta continuar valendo.
+  const similares = (await carregarSimilares(imovel)).map((card) => ({
+    ...card,
+    href: ret ? comRetorno(card.href, ret) : card.href,
+  }));
 
   return (
     <ImovelDetalhe
@@ -87,6 +102,8 @@ export default async function ImovelPage({
       similares={similares}
       similaresTitle={`Outros imóveis em ${imovel.city} e região`}
       similaresIntro="Selecionados na curadoria Avanz, mesma região ou mesmo perfil."
+      voltarHref={voltarHref}
+      voltarLabel="Voltar para os imóveis"
     />
   );
 }

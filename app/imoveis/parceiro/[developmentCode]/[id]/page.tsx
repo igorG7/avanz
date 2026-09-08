@@ -4,6 +4,13 @@ import { CatalogoIndisponivel } from "@/components/imoveis/CatalogoIndisponivel"
 import { ImovelDetalhe } from "@/components/imoveis/ImovelDetalhe";
 import { getPartnerUnit, listPartnerUnits } from "@/lib/api/imoveis";
 import {
+  RET_PARAM,
+  comRetorno,
+  hrefVitrine,
+  primeiro,
+  type SearchParams,
+} from "@/lib/imoveis/query";
+import {
   NAO_INFORMADO,
   buildFichaParceiro,
   formatPreco,
@@ -37,10 +44,17 @@ export async function generateMetadata({
 
 export default async function ParceiroPage({
   params,
+  searchParams,
 }: {
   params: Promise<Params>;
+  searchParams: Promise<SearchParams>;
 }) {
-  const { developmentCode, id } = await params;
+  const [{ developmentCode, id }, sp] = await Promise.all([
+    params,
+    searchParams,
+  ]);
+  const ret = primeiro(sp[RET_PARAM]);
+  const voltarHref = hrefVitrine(ret, "parceiros");
   const res = await getPartnerUnit(developmentCode, id);
 
   if (!res.ok) {
@@ -66,6 +80,10 @@ export default async function ParceiroPage({
         .filter((u) => u.id !== unidade.id)
         .slice(0, 3)
         .map(partnerUnitToCard)
+        .map((card) => ({
+          ...card,
+          href: ret ? comRetorno(card.href, ret) : card.href,
+        }))
     : [];
 
   return (
@@ -90,6 +108,8 @@ export default async function ParceiroPage({
       similares={similares}
       similaresTitle={bairro ? `Outras unidades em ${bairro}` : "Outras unidades do parceiro"}
       similaresIntro="Mesmo loteamento, disponibilidade confirmada com o consultor."
+      voltarHref={voltarHref}
+      voltarLabel="Voltar para a carteira parceiros"
     />
   );
 }
