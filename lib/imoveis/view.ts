@@ -174,9 +174,7 @@ const booleano = (v: unknown) =>
 /** Chaves de `details` por tipo, conforme CreatePropertyInput da API. */
 const DETAIL_SPECS: Record<string, DetailSpec> = {
   frontage: { label: "Frente", format: metros },
-  // `depth` na API: exibido como "Comprimento" porque "fundo" se confunde com a
-  // medida da divisa dos fundos, que é igual à frente.
-  depth: { label: "Comprimento", format: metros },
+  lotLength: { label: "Comprimento", format: metros },
   zoning: { label: "Zoneamento", format: texto },
   infrastructure: { label: "Infraestrutura", format: lista },
   builtArea: { label: "Área construída", format: metrosQuadrados },

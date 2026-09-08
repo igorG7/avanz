@@ -42,7 +42,7 @@ export type Property = {
   bedrooms?: number;
   bathrooms?: number;
   parkingSpots?: number;
-  /** Ficha específica do `type`: lote tem frontage/depth, chácara tem water/energy, etc. */
+  /** Ficha específica do `type`: lote tem frontage/lotLength, chácara tem water/energy, etc. */
   details?: Record<string, unknown>;
   /** Presente na listagem. */
   coverPhoto?: Photo;
