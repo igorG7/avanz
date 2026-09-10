@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
-import type { Imovel } from "@/lib/content/types";
 import { Icon } from "@/components/ui/Icon";
+import { ImovelCard } from "@/components/imoveis/ImovelCard";
+import type { ImovelCardVM } from "@/lib/imoveis/view";
 
 type Props = {
-  imoveis: Imovel[];
+  imoveis: ImovelCardVM[];
   eyebrow?: string;
   title?: string;
   intro?: string;
@@ -44,48 +44,24 @@ export function ImoveisGrid({
           </div>
         )}
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {imoveis.map((im) => (
-            <Link
-              key={im.slug}
-              href={`/imoveis/${im.slug}`}
-              className="group flex flex-col overflow-hidden rounded-card bg-white shadow-card transition hover:-translate-y-1 hover:shadow-lg"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-line">
-                <Image
-                  src={im.foto}
-                  alt={`${im.tipo} em ${im.bairro}`}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                />
-                {im.badge && (
-                  <span className="absolute left-3 top-3 rounded-pill bg-orange px-3 py-1 text-xs font-semibold text-white shadow-cta">
-                    {im.badge}
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-1 flex-col p-5">
-                <span className="text-xs font-semibold uppercase tracking-widest text-orange-deep">
-                  {im.tipo} · {im.bairro}, {im.cidade}
-                </span>
-                <h3 className="mt-2 font-display text-lg font-semibold text-navy">
-                  {im.area}
-                  {im.destaque ? ` · ${im.destaque}` : ""}
-                </h3>
-                <p className="mt-3 font-display text-xl font-bold text-navy">
-                  {im.preco}
-                </p>
-                <div className="mt-auto pt-5">
-                  <span className="inline-flex w-full items-center justify-center gap-2 rounded-pill bg-navy px-5 py-2.5 text-sm font-semibold text-white transition group-hover:bg-orange">
-                    Ver detalhes
-                    <Icon name="arrow-right" size={14} />
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+        {imoveis.length === 0 ? (
+          <div className="mt-10 rounded-card border border-line bg-white p-10 text-center">
+            <p className="text-muted">
+              Estamos atualizando o catálogo. Fale com a gente no WhatsApp que
+              mostramos as oportunidades do momento.
+            </p>
+          </div>
+        ) : (
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {imoveis.map((im) => (
+              <ImovelCard
+                key={im.key}
+                imovel={im}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              />
+            ))}
+          </div>
+        )}
 
         {showLink && (
           <div className="mt-12 flex justify-center">

@@ -28,6 +28,7 @@ export type IconName =
   | "mail"
   | "sliders"
   | "share"
+  | "close"
   | "calendar";
 
 const paths: Record<IconName, ReactElement> = {
@@ -175,6 +176,12 @@ const paths: Record<IconName, ReactElement> = {
       <line x1="5" y1="22" x2="20" y2="22" />
       <line x1="26" y1="22" x2="27" y2="22" />
       <circle cx="23" cy="22" r="2.8" />
+    </>
+  ),
+  close: (
+    <>
+      <line x1="8" y1="8" x2="24" y2="24" />
+      <line x1="24" y1="8" x2="8" y2="24" />
     </>
   ),
   share: (
