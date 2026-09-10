@@ -104,7 +104,7 @@ export function FiltrosImoveis({
 
   return (
     <div
-      className={`rounded-card bg-navy p-6 text-white transition-opacity lg:sticky lg:top-20 ${
+      className={`rounded-card bg-navy p-6 text-white transition-opacity ${
         pending ? "opacity-60" : ""
       }`}
     >
