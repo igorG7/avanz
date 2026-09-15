@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { WHATSAPP_DISPLAY, buildWhatsAppLink } from "@/lib/whatsapp";
 import { Icon } from "@/components/ui/Icon";
 
 export function Footer() {
@@ -75,7 +75,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="hover:text-white"
               >
-                +55 31 97137-5793
+                {WHATSAPP_DISPLAY}
               </a>
             </li>
             <li className="flex items-center gap-2.5">

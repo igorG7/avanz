@@ -1,4 +1,5 @@
 import type { FAQItem } from "@/components/shared/FAQ";
+import { WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 
 export const faqItems: FAQItem[] = [
   {
@@ -19,6 +20,6 @@ export const faqItems: FAQItem[] = [
   },
   {
     q: "Dá para falar direto no WhatsApp?",
-    a: "Sim, é o canal principal. Resposta direta com consultor sênior, no número +55 31 97137-5793. Sem call center, sem atendente automático, sem cadastro infinito.",
+    a: `Sim, é o canal principal. Resposta direta com consultor sênior, no número ${WHATSAPP_DISPLAY}. Sem call center, sem atendente automático, sem cadastro infinito.`,
   },
 ];
