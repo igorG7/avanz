@@ -1,6 +1,6 @@
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { QuickLeadForm } from "@/components/shared/QuickLeadForm";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { WHATSAPP_DISPLAY, buildWhatsAppLink } from "@/lib/whatsapp";
 
 type ContactItem = {
   icon: IconName;
@@ -19,7 +19,7 @@ export function Contato() {
     {
       icon: "whatsapp",
       label: "WhatsApp · canal direto",
-      value: "+55 31 97137-5793",
+      value: WHATSAPP_DISPLAY,
       href: ctaLink,
       external: true,
     },
