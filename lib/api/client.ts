@@ -1,6 +1,13 @@
-export const API_BASE_URL = (
-  process.env.AVANZ_API_URL ?? "https://api-imoveis-avanz.onrender.com/api"
-).replace(/\/$/, "");
+// Sem fallback de propósito: um deploy sem a variável apontaria em silêncio para
+// a API de dev. Falhar no build é melhor que servir a base errada.
+const apiUrl = process.env.AVANZ_API_URL;
+if (!apiUrl) {
+  throw new Error(
+    "AVANZ_API_URL não está definida. Copie .env.example para .env e configure a URL da API.",
+  );
+}
+
+export const API_BASE_URL = apiUrl.replace(/\/$/, "");
 
 export type ApiResult<T> =
   | { ok: true; data: T }
