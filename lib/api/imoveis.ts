@@ -9,8 +9,12 @@ import type {
   PropertyQuery,
 } from "./types";
 
-/** Acervo próprio: muda pelo painel, não precisa ser lido a cada request. */
-const OWN_REVALIDATE = 60;
+/**
+ * Acervo próprio: janela curta para o que se publica no painel aparecer logo.
+ * O valor acompanha o tráfego — com volume alto, o caminho é revalidação sob
+ * demanda pelo painel em vez de encurtar mais isto.
+ */
+const OWN_REVALIDATE = 10;
 /** Carteira do parceiro: lida ao vivo da J.Lemara, cache curto para não pesar na origem. */
 const PARTNER_REVALIDATE = 300;
 
