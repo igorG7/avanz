@@ -31,19 +31,26 @@ const MILESTONES: Milestone[] = [
 
 type Membro = {
   nome: string;
-  iniciais: string;
   papel: string;
   body: string;
+  /** Sem foto, o retrato vira as iniciais — mesma moldura, mesmo tamanho. */
+  foto?: string;
+  iniciais: string;
 };
 
-// Iniciais no lugar do retrato enquanto não há foto; o card não muda quando ela
-// chegar. O fundador tem bloco próprio acima e não se repete aqui.
 const EQUIPE: Membro[] = [
   {
+    nome: "Ivan Dias",
+    papel: "Fundador e consultor sênior",
+    body: "Há quase uma década organizando decisões imobiliárias na RMBH. Conduz a curadoria e acompanha pessoalmente as negociações, da primeira conversa à escritura.",
+    foto: "/ivan-dias.jpg",
+    iniciais: "ID",
+  },
+  {
     nome: "Mary Carmo",
-    iniciais: "MC",
     papel: "Atendimento e financeiro",
     body: "Primeiro contato, agendamento de visitas e a parte financeira do processo, da proposta à documentação.",
+    iniciais: "MC",
   },
 ];
 
@@ -51,49 +58,26 @@ export function SobreNos() {
   return (
     <section id="sobre" className="scroll-mt-16 bg-offwhite">
       <div className="container-content py-20">
-        {/* Block 1 — Founder photo (left) + mission and founder copy (right) */}
-        <div className="grid gap-10 md:grid-cols-[1fr_1.15fr] md:items-start md:gap-14">
-          <figure className="relative isolate aspect-[4/5] overflow-hidden rounded-card bg-navy shadow-card">
-            <Image
-              src="/ivan-dias.jpg"
-              alt="Ivan Dias, fundador da Avanz Imóveis"
-              fill
-              priority
-              sizes="(min-width: 768px) 45vw, 100vw"
-              className="object-cover object-top"
-            />
-          </figure>
-
-          <div>
-            <span className="eyebrow">Sobre nós</span>
-            <h2 className="section-title mt-3">
-              Comprar imóvel é <span className="text-orange">decisão</span> de
-              vida.
-            </h2>
-            <div className="mt-6 space-y-4 text-base leading-relaxed text-ink sm:text-lg">
-              <p>
-                A Avanz Imóveis nasceu da convicção de que comprar um imóvel
-                não é uma transação, é uma decisão de vida. Operamos em Belo
-                Horizonte, Mateus Leme, Jaboticatubas e RMBH, com um modelo de
-                consultoria que coloca o atendimento como produto principal.
-              </p>
-              <p>
-                O mercado oferece volume. Falta direção. É aí que entramos:
-                filtramos, traduzimos, organizamos, para que você decida com
-                clareza, sem ruído. Trabalhamos com terrenos, loteamentos, MCMV
-                e médio padrão, com opções de financiamento próprio.
-              </p>
-            </div>
-
-            <div className="mt-8 border-t border-line pt-6">
-              <span className="eyebrow">O fundador</span>
-              <h3 className="mt-3 font-display text-xl font-bold text-navy sm:text-2xl">
-                Ivan Dias
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted sm:text-base">
-                Há quase uma década organizando decisões imobiliárias na RMBH.
-              </p>
-            </div>
+        {/* Block 1 — Mission */}
+        <div className="max-w-3xl">
+          <span className="eyebrow">Sobre nós</span>
+          <h2 className="section-title mt-3">
+            Comprar imóvel é <span className="text-orange">decisão</span> de
+            vida.
+          </h2>
+          <div className="mt-6 space-y-4 text-base leading-relaxed text-ink sm:text-lg">
+            <p>
+              A Avanz Imóveis nasceu da convicção de que comprar um imóvel não
+              é uma transação, é uma decisão de vida. Operamos em Belo
+              Horizonte, Mateus Leme, Jaboticatubas e RMBH, com um modelo de
+              consultoria que coloca o atendimento como produto principal.
+            </p>
+            <p>
+              O mercado oferece volume. Falta direção. É aí que entramos:
+              filtramos, traduzimos, organizamos, para que você decida com
+              clareza, sem ruído. Trabalhamos com terrenos, loteamentos, MCMV e
+              médio padrão, com opções de financiamento próprio.
+            </p>
           </div>
         </div>
 
@@ -186,45 +170,58 @@ export function SobreNos() {
 
         {/* Block 3 — Equipe */}
         <div className="mt-16 border-t border-line pt-16">
-          <div className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:items-start md:gap-14">
-            <div>
-              <h3 className="font-display text-2xl font-bold leading-tight text-navy sm:text-3xl">
-                Quem atende você.
-              </h3>
-              <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
-                Time enxuto por escolha. Você fala com quem decide e com quem
-                acompanha seu processo do primeiro contato à escritura, sem
-                passar por fila nem repetir sua história a cada ligação.
-              </p>
-            </div>
-
-            <ul className="space-y-4">
-              {EQUIPE.map((pessoa) => (
-                <li
-                  key={pessoa.nome}
-                  className="flex gap-5 rounded-card border border-line bg-white p-5 sm:p-6"
-                >
-                  <span
-                    aria-hidden
-                    className="flex h-16 w-16 shrink-0 items-center justify-center rounded-card bg-navy font-display text-xl font-bold text-orange"
-                  >
-                    {pessoa.iniciais}
-                  </span>
-                  <div className="min-w-0">
-                    <h4 className="font-display text-base font-semibold text-navy">
-                      {pessoa.nome}
-                    </h4>
-                    <p className="mt-0.5 text-xs font-semibold uppercase tracking-widest text-orange-deep">
-                      {pessoa.papel}
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">
-                      {pessoa.body}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+          <div className="max-w-2xl">
+            <h3 className="font-display text-2xl font-bold leading-tight text-navy sm:text-3xl">
+              Quem atende você.
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+              Time enxuto por escolha. Você fala com quem decide e com quem
+              acompanha seu processo do primeiro contato à escritura, sem
+              passar por fila nem repetir sua história a cada ligação.
+            </p>
           </div>
+
+          {/* Uma faixa por pessoa: retrato à esquerda, sempre do mesmo tamanho,
+              e a descrição ao lado. */}
+          <ul className="mt-12 space-y-10">
+            {EQUIPE.map((pessoa) => (
+              <li
+                key={pessoa.nome}
+                className="grid gap-6 sm:grid-cols-[minmax(0,320px)_1fr] sm:items-center sm:gap-10"
+              >
+                <figure className="relative isolate aspect-[4/5] overflow-hidden rounded-card bg-navy shadow-card">
+                  {pessoa.foto ? (
+                    <Image
+                      src={pessoa.foto}
+                      alt={`${pessoa.nome}, ${pessoa.papel.toLowerCase()} da Avanz Imóveis`}
+                      fill
+                      sizes="(min-width: 640px) 320px, 100vw"
+                      className="object-cover object-top"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 flex items-center justify-center font-display text-7xl font-bold text-orange/55"
+                    >
+                      {pessoa.iniciais}
+                    </span>
+                  )}
+                </figure>
+
+                <div>
+                  <h4 className="font-display text-xl font-bold text-navy sm:text-2xl">
+                    {pessoa.nome}
+                  </h4>
+                  <p className="mt-1.5 text-xs font-semibold uppercase tracking-widest text-orange-deep">
+                    {pessoa.papel}
+                  </p>
+                  <p className="mt-4 text-base leading-relaxed text-ink">
+                    {pessoa.body}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
