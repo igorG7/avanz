@@ -29,6 +29,30 @@ const MILESTONES: Milestone[] = [
   },
 ];
 
+type Membro = {
+  nome: string;
+  iniciais: string;
+  papel: string;
+  body: string[];
+  foto?: string;
+};
+
+// Iniciais no lugar do retrato enquanto não há foto; a moldura não muda quando
+// ela chegar. O fundador tem bloco próprio acima e não se repete aqui.
+const EQUIPE: Membro[] = [
+  {
+    nome: "Mary Carmo",
+    iniciais: "MC",
+    papel: "Atendimento e financeiro",
+    foto: "/mary-carmo.jpg",
+    body: [
+      "Primeiro contato, agendamento de visitas e a parte financeira do processo, da proposta à documentação.",
+      "É com ela que você resolve horário de visita, papelada pendente e dúvida sobre valores, prazos e condições de pagamento, sem repetir sua história a cada ligação.",
+      "Acompanha cada negociação junto do consultor, então o seu processo continua andando mesmo quando o Ivan está em visita.",
+    ],
+  },
+];
+
 export function SobreNos() {
   return (
     <section id="sobre" className="scroll-mt-16 bg-offwhite">
@@ -163,6 +187,62 @@ export function SobreNos() {
               </li>
             ))}
           </ol>
+        </div>
+
+        {/* Block 3 — Equipe */}
+        <div className="mt-16 border-t border-line pt-16">
+          <div className="max-w-2xl">
+            <h3 className="font-display text-2xl font-bold leading-tight text-navy sm:text-3xl">
+              Quem atende você.
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+              Time enxuto por escolha. Você fala com quem decide e com quem
+              acompanha seu processo do primeiro contato à escritura, sem
+              passar por fila nem repetir sua história a cada ligação.
+            </p>
+          </div>
+
+          <ul className="mt-12 space-y-12">
+            {EQUIPE.map((pessoa) => (
+              <li
+                key={pessoa.nome}
+                className="grid gap-8 md:grid-cols-[1fr_1.3fr] md:items-center md:gap-14"
+              >
+                <figure className="relative isolate aspect-[4/5] overflow-hidden rounded-card bg-navy shadow-card">
+                  {pessoa.foto ? (
+                    <Image
+                      src={pessoa.foto}
+                      alt={`${pessoa.nome}, ${pessoa.papel.toLowerCase()} da Avanz Imóveis`}
+                      fill
+                      sizes="(min-width: 768px) 40vw, 100vw"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 flex items-center justify-center font-display text-8xl font-bold text-orange/55"
+                    >
+                      {pessoa.iniciais}
+                    </span>
+                  )}
+                </figure>
+
+                <div>
+                  <h4 className="font-display text-xl font-bold text-navy sm:text-2xl">
+                    {pessoa.nome}
+                  </h4>
+                  <p className="mt-1.5 text-xs font-semibold uppercase tracking-widest text-orange-deep">
+                    {pessoa.papel}
+                  </p>
+                  <div className="mt-4 space-y-3 text-base leading-relaxed text-ink">
+                    {pessoa.body.map((paragrafo) => (
+                      <p key={paragrafo}>{paragrafo}</p>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

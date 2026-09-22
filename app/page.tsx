@@ -64,6 +64,12 @@ const process = [
 const depoimentos: Depoimento[] = [
   {
     quote:
+      "Tenho que agradecer muito a vocês, pois realmente enxergaram o que eu precisava e me conduziram até um lote que me conquistou e que atendia exatamente aos meus objetivos. Fui muito bem tratada e para mim isso conta muito, só agradecimentos!",
+    nome: "Cliente Avanz",
+    contexto: "compradora de lote",
+  },
+  {
+    quote:
       "Cheguei perdido com 30 anúncios na cabeça. Saí com 3 opções que faziam sentido pro meu bolso.",
     nome: "Rafael C.",
     contexto: "comprador de lote em Mateus Leme",
