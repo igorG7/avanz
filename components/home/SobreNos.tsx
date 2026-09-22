@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Milestone = {
   year: string;
   title: string;
@@ -65,31 +67,13 @@ export function SobreNos() {
             </p>
 
             <figure className="relative isolate mt-5 aspect-[4/5] overflow-hidden rounded-card bg-navy shadow-card">
-              <div
-                aria-hidden
-                className="absolute inset-0 opacity-15"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)",
-                  backgroundSize: "32px 32px",
-                }}
+              <Image
+                src="/ivan-dias.jpg"
+                alt="Ivan Dias, fundador da Avanz Imóveis"
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover object-top"
               />
-              <div
-                aria-hidden
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(circle at 30% 30%, rgba(249,115,22,0.22) 0%, transparent 60%)",
-                }}
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-display text-9xl font-bold text-orange/55 sm:text-[140px]">
-                  ID
-                </span>
-              </div>
-              <figcaption className="absolute bottom-4 right-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">
-                Foto · em breve
-              </figcaption>
             </figure>
           </div>
         </div>
