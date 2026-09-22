@@ -29,6 +29,24 @@ const MILESTONES: Milestone[] = [
   },
 ];
 
+type Membro = {
+  nome: string;
+  iniciais: string;
+  papel: string;
+  body: string;
+};
+
+// Iniciais no lugar do retrato enquanto não há foto; o card não muda quando ela
+// chegar. O fundador tem bloco próprio acima e não se repete aqui.
+const EQUIPE: Membro[] = [
+  {
+    nome: "Mary Carmo",
+    iniciais: "MC",
+    papel: "Atendimento e financeiro",
+    body: "Primeiro contato, agendamento de visitas e a parte financeira do processo, da proposta à documentação.",
+  },
+];
+
 export function SobreNos() {
   return (
     <section id="sobre" className="scroll-mt-16 bg-offwhite">
@@ -163,6 +181,49 @@ export function SobreNos() {
               </li>
             ))}
           </ol>
+        </div>
+
+        {/* Block 3 — Equipe */}
+        <div className="mt-16 border-t border-line pt-16">
+          <div className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:items-start md:gap-14">
+            <div>
+              <h3 className="font-display text-2xl font-bold leading-tight text-navy sm:text-3xl">
+                Quem atende você.
+              </h3>
+              <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+                Time enxuto por escolha. Você fala com quem decide e com quem
+                acompanha seu processo do primeiro contato à escritura, sem
+                passar por fila nem repetir sua história a cada ligação.
+              </p>
+            </div>
+
+            <ul className="space-y-4">
+              {EQUIPE.map((pessoa) => (
+                <li
+                  key={pessoa.nome}
+                  className="flex gap-5 rounded-card border border-line bg-white p-5 sm:p-6"
+                >
+                  <span
+                    aria-hidden
+                    className="flex h-16 w-16 shrink-0 items-center justify-center rounded-card bg-navy font-display text-xl font-bold text-orange"
+                  >
+                    {pessoa.iniciais}
+                  </span>
+                  <div className="min-w-0">
+                    <h4 className="font-display text-base font-semibold text-navy">
+                      {pessoa.nome}
+                    </h4>
+                    <p className="mt-0.5 text-xs font-semibold uppercase tracking-widest text-orange-deep">
+                      {pessoa.papel}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">
+                      {pessoa.body}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
