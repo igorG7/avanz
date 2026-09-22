@@ -33,7 +33,7 @@ type Membro = {
   nome: string;
   iniciais: string;
   papel: string;
-  body: string;
+  body: string[];
 };
 
 // Iniciais no lugar do retrato enquanto não há foto; a moldura não muda quando
@@ -43,7 +43,11 @@ const EQUIPE: Membro[] = [
     nome: "Mary Carmo",
     iniciais: "MC",
     papel: "Atendimento e financeiro",
-    body: "Primeiro contato, agendamento de visitas e a parte financeira do processo, da proposta à documentação.",
+    body: [
+      "Primeiro contato, agendamento de visitas e a parte financeira do processo, da proposta à documentação.",
+      "É com ela que você resolve horário de visita, papelada pendente e dúvida sobre valores, prazos e condições de pagamento, sem repetir sua história a cada ligação.",
+      "Acompanha cada negociação junto do consultor, então o seu processo continua andando mesmo quando o Ivan está em visita.",
+    ],
   },
 ];
 
@@ -218,9 +222,11 @@ export function SobreNos() {
                   <p className="mt-1.5 text-xs font-semibold uppercase tracking-widest text-orange-deep">
                     {pessoa.papel}
                   </p>
-                  <p className="mt-4 text-base leading-relaxed text-ink">
-                    {pessoa.body}
-                  </p>
+                  <div className="mt-4 space-y-3 text-base leading-relaxed text-ink">
+                    {pessoa.body.map((paragrafo) => (
+                      <p key={paragrafo}>{paragrafo}</p>
+                    ))}
+                  </div>
                 </div>
               </li>
             ))}
