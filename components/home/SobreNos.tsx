@@ -31,26 +31,19 @@ const MILESTONES: Milestone[] = [
 
 type Membro = {
   nome: string;
+  iniciais: string;
   papel: string;
   body: string;
-  /** Sem foto, o retrato vira as iniciais — mesma moldura, mesmo tamanho. */
-  foto?: string;
-  iniciais: string;
 };
 
+// Iniciais no lugar do retrato enquanto não há foto; a moldura não muda quando
+// ela chegar. O fundador tem bloco próprio acima e não se repete aqui.
 const EQUIPE: Membro[] = [
   {
-    nome: "Ivan Dias",
-    papel: "Fundador e consultor sênior",
-    body: "Há quase uma década organizando decisões imobiliárias na RMBH. Conduz a curadoria e acompanha pessoalmente as negociações, da primeira conversa à escritura.",
-    foto: "/ivan-dias.jpg",
-    iniciais: "ID",
-  },
-  {
     nome: "Mary Carmo",
+    iniciais: "MC",
     papel: "Atendimento e financeiro",
     body: "Primeiro contato, agendamento de visitas e a parte financeira do processo, da proposta à documentação.",
-    iniciais: "MC",
   },
 ];
 
@@ -58,26 +51,48 @@ export function SobreNos() {
   return (
     <section id="sobre" className="scroll-mt-16 bg-offwhite">
       <div className="container-content py-20">
-        {/* Block 1 — Mission */}
-        <div className="max-w-3xl">
-          <span className="eyebrow">Sobre nós</span>
-          <h2 className="section-title mt-3">
-            Comprar imóvel é <span className="text-orange">decisão</span> de
-            vida.
-          </h2>
-          <div className="mt-6 space-y-4 text-base leading-relaxed text-ink sm:text-lg">
-            <p>
-              A Avanz Imóveis nasceu da convicção de que comprar um imóvel não
-              é uma transação, é uma decisão de vida. Operamos em Belo
-              Horizonte, Mateus Leme, Jaboticatubas e RMBH, com um modelo de
-              consultoria que coloca o atendimento como produto principal.
+        {/* Block 1 — Mission (left) + Founder quote card (right) */}
+        <div className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:items-start md:gap-14">
+          <div>
+            <span className="eyebrow">Sobre nós</span>
+            <h2 className="section-title mt-3">
+              Comprar imóvel é <span className="text-orange">decisão</span> de
+              vida.
+            </h2>
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-ink sm:text-lg">
+              <p>
+                A Avanz Imóveis nasceu da convicção de que comprar um imóvel
+                não é uma transação, é uma decisão de vida. Operamos em Belo
+                Horizonte, Mateus Leme, Jaboticatubas e RMBH, com um modelo de
+                consultoria que coloca o atendimento como produto principal.
+              </p>
+              <p>
+                O mercado oferece volume. Falta direção. É aí que entramos:
+                filtramos, traduzimos, organizamos, para que você decida com
+                clareza, sem ruído. Trabalhamos com terrenos, loteamentos, MCMV
+                e médio padrão, com opções de financiamento próprio.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <span className="eyebrow">O fundador</span>
+            <h3 className="mt-3 font-display text-xl font-bold text-navy sm:text-2xl">
+              Ivan Dias
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted sm:text-base">
+              Há quase uma década organizando decisões imobiliárias na RMBH.
             </p>
-            <p>
-              O mercado oferece volume. Falta direção. É aí que entramos:
-              filtramos, traduzimos, organizamos, para que você decida com
-              clareza, sem ruído. Trabalhamos com terrenos, loteamentos, MCMV e
-              médio padrão, com opções de financiamento próprio.
-            </p>
+
+            <figure className="relative isolate mt-5 aspect-[4/5] overflow-hidden rounded-card bg-navy shadow-card">
+              <Image
+                src="/ivan-dias.jpg"
+                alt="Ivan Dias, fundador da Avanz Imóveis"
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover object-top"
+              />
+            </figure>
           </div>
         </div>
 
@@ -181,31 +196,19 @@ export function SobreNos() {
             </p>
           </div>
 
-          {/* Uma faixa por pessoa: retrato à esquerda, sempre do mesmo tamanho,
-              e a descrição ao lado. */}
-          <ul className="mt-12 space-y-10">
+          <ul className="mt-12 space-y-12">
             {EQUIPE.map((pessoa) => (
               <li
                 key={pessoa.nome}
-                className="grid gap-6 sm:grid-cols-[minmax(0,320px)_1fr] sm:items-center sm:gap-10"
+                className="grid gap-8 md:grid-cols-[1fr_1.3fr] md:items-center md:gap-14"
               >
                 <figure className="relative isolate aspect-[4/5] overflow-hidden rounded-card bg-navy shadow-card">
-                  {pessoa.foto ? (
-                    <Image
-                      src={pessoa.foto}
-                      alt={`${pessoa.nome}, ${pessoa.papel.toLowerCase()} da Avanz Imóveis`}
-                      fill
-                      sizes="(min-width: 640px) 320px, 100vw"
-                      className="object-cover object-top"
-                    />
-                  ) : (
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 flex items-center justify-center font-display text-7xl font-bold text-orange/55"
-                    >
-                      {pessoa.iniciais}
-                    </span>
-                  )}
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 flex items-center justify-center font-display text-8xl font-bold text-orange/55"
+                  >
+                    {pessoa.iniciais}
+                  </span>
                 </figure>
 
                 <div>
