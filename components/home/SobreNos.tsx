@@ -34,6 +34,7 @@ type Membro = {
   iniciais: string;
   papel: string;
   body: string[];
+  foto?: string;
 };
 
 // Iniciais no lugar do retrato enquanto não há foto; a moldura não muda quando
@@ -43,6 +44,7 @@ const EQUIPE: Membro[] = [
     nome: "Mary Carmo",
     iniciais: "MC",
     papel: "Atendimento e financeiro",
+    foto: "/mary-carmo.jpg",
     body: [
       "Primeiro contato, agendamento de visitas e a parte financeira do processo, da proposta à documentação.",
       "É com ela que você resolve horário de visita, papelada pendente e dúvida sobre valores, prazos e condições de pagamento, sem repetir sua história a cada ligação.",
@@ -207,12 +209,22 @@ export function SobreNos() {
                 className="grid gap-8 md:grid-cols-[1fr_1.3fr] md:items-center md:gap-14"
               >
                 <figure className="relative isolate aspect-[4/5] overflow-hidden rounded-card bg-navy shadow-card">
-                  <span
-                    aria-hidden
-                    className="absolute inset-0 flex items-center justify-center font-display text-8xl font-bold text-orange/55"
-                  >
-                    {pessoa.iniciais}
-                  </span>
+                  {pessoa.foto ? (
+                    <Image
+                      src={pessoa.foto}
+                      alt={`${pessoa.nome}, ${pessoa.papel.toLowerCase()} da Avanz Imóveis`}
+                      fill
+                      sizes="(min-width: 768px) 40vw, 100vw"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 flex items-center justify-center font-display text-8xl font-bold text-orange/55"
+                    >
+                      {pessoa.iniciais}
+                    </span>
+                  )}
                 </figure>
 
                 <div>
