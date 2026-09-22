@@ -51,8 +51,19 @@ export function SobreNos() {
   return (
     <section id="sobre" className="scroll-mt-16 bg-offwhite">
       <div className="container-content py-20">
-        {/* Block 1 — Mission (left) + Founder quote card (right) */}
-        <div className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:items-start md:gap-14">
+        {/* Block 1 — Founder photo (left) + mission and founder copy (right) */}
+        <div className="grid gap-10 md:grid-cols-[1fr_1.15fr] md:items-start md:gap-14">
+          <figure className="relative isolate aspect-[4/5] overflow-hidden rounded-card bg-navy shadow-card">
+            <Image
+              src="/ivan-dias.jpg"
+              alt="Ivan Dias, fundador da Avanz Imóveis"
+              fill
+              priority
+              sizes="(min-width: 768px) 45vw, 100vw"
+              className="object-cover object-top"
+            />
+          </figure>
+
           <div>
             <span className="eyebrow">Sobre nós</span>
             <h2 className="section-title mt-3">
@@ -73,26 +84,16 @@ export function SobreNos() {
                 e médio padrão, com opções de financiamento próprio.
               </p>
             </div>
-          </div>
 
-          <div>
-            <span className="eyebrow">O fundador</span>
-            <h3 className="mt-3 font-display text-xl font-bold text-navy sm:text-2xl">
-              Ivan Dias
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted sm:text-base">
-              Há quase uma década organizando decisões imobiliárias na RMBH.
-            </p>
-
-            <figure className="relative isolate mt-5 aspect-[4/5] overflow-hidden rounded-card bg-navy shadow-card">
-              <Image
-                src="/ivan-dias.jpg"
-                alt="Ivan Dias, fundador da Avanz Imóveis"
-                fill
-                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover object-top"
-              />
-            </figure>
+            <div className="mt-8 border-t border-line pt-6">
+              <span className="eyebrow">O fundador</span>
+              <h3 className="mt-3 font-display text-xl font-bold text-navy sm:text-2xl">
+                Ivan Dias
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted sm:text-base">
+                Há quase uma década organizando decisões imobiliárias na RMBH.
+              </p>
+            </div>
           </div>
         </div>
 
