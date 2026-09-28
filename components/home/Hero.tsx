@@ -20,7 +20,7 @@ type Props = {
 };
 
 const DEFAULT_STATS = [
-  { value: "+400", label: "clientes atendidos" },
+  { value: "+600", label: "famílias atendidas" },
   { value: "+9", label: "anos de história" },
   { value: "CRECI", label: "8638-MG" },
 ];

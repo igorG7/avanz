@@ -8,7 +8,7 @@ const NUMEROS: {
 }[] = [
   {
     icon: "users",
-    value: "+400 clientes",
+    value: "+600 famílias",
     label: "Famílias guiadas até a escritura com curadoria por perfil, não vendemos volume, conduzimos decisão.",
   },
   {
