@@ -4,6 +4,7 @@ import { CatalogoIndisponivel } from "@/components/imoveis/CatalogoIndisponivel"
 import { ImovelDetalhe } from "@/components/imoveis/ImovelDetalhe";
 import { getPropertyBySlug, listProperties } from "@/lib/api/imoveis";
 import type { Property } from "@/lib/api/types";
+import { absoluteUrl, metaDescription } from "@/lib/site";
 import {
   RET_PARAM,
   comRetorno,
@@ -33,11 +34,19 @@ export async function generateMetadata({
   if (!res.ok) return { title: "Imóvel não encontrado" };
 
   const imovel = res.data;
+  const local = `${imovel.district}, ${imovel.city}`;
+  const capa =
+    imovel.photos?.find((f) => f.cover)?.url ?? imovel.photos?.[0]?.url;
   return {
-    title: imovel.title,
-    description:
-      imovel.description?.slice(0, 200) ??
-      `${TIPO_LABEL[imovel.type]} de ${formatArea(imovel.area)} em ${imovel.district}, ${imovel.city}.`,
+    title: imovel.title.toLowerCase().includes(imovel.city.toLowerCase())
+      ? imovel.title
+      : `${imovel.title} em ${imovel.city}`,
+    description: metaDescription(
+      imovel.description ??
+        `${TIPO_LABEL[imovel.type]} de ${formatArea(imovel.area)} em ${local}.`,
+    ),
+    alternates: { canonical: `/imoveis/${imovel.slug}` },
+    openGraph: capa ? { images: [{ url: capa }] } : undefined,
   };
 }
 
@@ -98,7 +107,7 @@ export default async function ImovelPage({
       ficha={buildFichaTecnica(imovel)}
       fotos={fotos}
       descricaoCurta={`${tipo.toLowerCase()} em ${imovel.district}, ${imovel.city}`}
-      url={`https://avanzimoveis.com/imoveis/${imovel.slug}`}
+      url={absoluteUrl(`/imoveis/${imovel.slug}`)}
       similares={similares}
       similaresTitle={`Outros imóveis em ${imovel.city} e região`}
       similaresIntro="Selecionados na curadoria Avanz, mesma região ou mesmo perfil."

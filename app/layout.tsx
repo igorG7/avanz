@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import { unstable_ViewTransition as ViewTransition } from "react";
+import { SITE_NAME, SITE_URL, organizationJsonLd } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,7 +18,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://avanzimoveis.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Avanz Imóveis, Consultoria imobiliária na RMBH",
     template: "%s · Avanz Imóveis",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     "Consultoria imobiliária com financiamento próprio na RMBH. Lotes, sítios e chácaras com direção clara, entender para atender.",
   openGraph: {
     type: "website",
-    siteName: "Avanz Imóveis",
+    siteName: SITE_NAME,
     locale: "pt_BR",
   },
 };
@@ -45,6 +46,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${inter.variable} ${montserrat.variable}`}>
       <body suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <ViewTransition>{children}</ViewTransition>
       </body>
     </html>

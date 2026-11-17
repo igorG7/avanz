@@ -42,6 +42,8 @@ export const metadata: Metadata = {
   title: "Imóveis disponíveis",
   description:
     "Lotes, sítios e chácaras da carteira própria da Avanz e da carteira de parceiros. Curadoria, financiamento próprio e atendimento humano.",
+  // Filtros, ordenação e paginação geram variações da mesma vitrine.
+  alternates: { canonical: "/imoveis" },
 };
 
 const PAGE_SIZE = 12;
