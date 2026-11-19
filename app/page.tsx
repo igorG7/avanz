@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Hero } from "@/components/home/Hero";
 import { AvanzIdeia } from "@/components/home/AvanzIdeia";
@@ -14,6 +15,10 @@ import { WhatsAppFloating } from "@/components/layout/WhatsAppFloating";
 import { listProperties } from "@/lib/api/imoveis";
 import type { Pillar, Depoimento } from "@/lib/content/types";
 import { propertyToCard, type ImovelCardVM } from "@/lib/imoveis/view";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const pillars: Pillar[] = [
   {

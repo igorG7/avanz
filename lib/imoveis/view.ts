@@ -108,7 +108,7 @@ export function propertyToCard(p: Property): ImovelCardVM {
     key: p.id,
     href: `/imoveis/${p.slug}`,
     foto: p.coverPhoto?.url ?? p.photos?.find((f) => f.cover)?.url ?? p.photos?.[0]?.url,
-    alt: p.title,
+    alt: `${p.title}, ${p.district}, ${p.city}`,
     badge:
       p.status !== "disponivel"
         ? STATUS_LABEL[p.status]
@@ -143,7 +143,7 @@ export function partnerUnitToCard(u: PartnerUnit): ImovelCardVM {
     key: partnerKey(u),
     href: partnerHref(u.developmentCode, u.id),
     foto: [...u.photos].sort((a, b) => a.order - b.order)[0]?.url,
-    alt: titleCase(u.title),
+    alt: local ? `${titleCase(u.title)}, ${local}` : titleCase(u.title),
     badge: "Parceiro",
     eyebrow: local ? `Lote · ${local}` : "Lote",
     titulo: loteQuadra || titleCase(u.title),

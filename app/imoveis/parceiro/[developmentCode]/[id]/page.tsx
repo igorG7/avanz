@@ -20,6 +20,7 @@ import {
   refAtendimento,
   titleCase,
 } from "@/lib/imoveis/view";
+import { absoluteUrl, metaDescription } from "@/lib/site";
 
 type Params = { developmentCode: string; id: string };
 
@@ -36,9 +37,28 @@ export async function generateMetadata({
   if (!res.ok) return { title: "Imóvel não encontrado" };
 
   const unidade = res.data;
+  const local = localizacaoParceiro(unidade);
+  const preco = unidade.price ? `, a partir de ${formatPreco(unidade.price)}` : "";
+  const capa = [...unidade.photos].sort((a, b) => a.order - b.order)[0]?.url;
+  // O título da origem já traz o loteamento, que também vem em `local`.
+  const loteQuadra = [
+    unidade.lot && `Lote ${unidade.lot}`,
+    unidade.block && `Quadra ${unidade.block}`,
+  ]
+    .filter(Boolean)
+    .join(", ");
   return {
-    title: titleCase(unidade.title),
-    description: `${[titleCase(unidade.district), titleCase(unidade.city)].filter(Boolean).join(", ") || "Lote"} na carteira de parceiros da Avanz.`,
+    title:
+      loteQuadra && local
+        ? `${loteQuadra} em ${local}`
+        : titleCase(unidade.title),
+    description: metaDescription(
+      `Lote ${local ? `em ${local}` : "da carteira de parceiros"}${preco}. Consulte disponibilidade e condições com a Avanz Imóveis pelo WhatsApp.`,
+    ),
+    alternates: {
+      canonical: partnerHref(unidade.developmentCode, unidade.id),
+    },
+    openGraph: capa ? { images: [{ url: capa }] } : undefined,
   };
 }
 
@@ -104,7 +124,7 @@ export default async function ParceiroPage({
       fotos={fotos}
       aviso={AVISO}
       descricaoCurta={local ? `lote em ${local}` : "lote"}
-      url={`https://avanzimoveis.com${partnerHref(unidade.developmentCode, unidade.id)}`}
+      url={absoluteUrl(partnerHref(unidade.developmentCode, unidade.id))}
       similares={similares}
       similaresTitle={bairro ? `Outras unidades em ${bairro}` : "Outras unidades do parceiro"}
       similaresIntro="Mesmo loteamento, disponibilidade confirmada com o consultor."
