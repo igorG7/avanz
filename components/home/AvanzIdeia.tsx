@@ -9,12 +9,12 @@ const NUMEROS: {
   {
     icon: "users",
     value: "+600 famílias",
-    label: "Famílias guiadas até a escritura com curadoria por perfil, não vendemos volume, conduzimos decisão.",
+    label: "Famílias guiadas até a escritura com consultoria por perfil, não vendemos volume, conduzimos decisão.",
   },
   {
     icon: "trending-up",
     value: "+9 anos",
-    label: "Quase uma década atuando na RMBH, a Avanz é a nova fase de uma marca já consolidada na região.",
+    label: "Anos de atuação de Ivan Dias, fundador, no mercado imobiliário da RMBH. A Avanz é a nova fase da Ivan Dias Imóveis.",
   },
   {
     icon: "shield",

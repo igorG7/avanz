@@ -110,7 +110,7 @@ export default async function ImovelPage({
       url={absoluteUrl(`/imoveis/${imovel.slug}`)}
       similares={similares}
       similaresTitle={`Outros imóveis em ${imovel.city} e região`}
-      similaresIntro="Selecionados na curadoria Avanz, mesma região ou mesmo perfil."
+      similaresIntro="Selecionados pela consultoria Avanz, mesma região ou mesmo perfil."
       voltarHref={voltarHref}
       voltarLabel="Voltar para os imóveis"
     />
