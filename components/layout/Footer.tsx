@@ -122,7 +122,12 @@ export function Footer() {
             © {new Date().getFullYear()} Avanz Imóveis. Todos os direitos
             reservados.
           </span>
-          <span>CRECI 8638-MG</span>
+          <span className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <Link href="/privacidade" className="hover:text-white">
+              Política de privacidade
+            </Link>
+            <span>CRECI 8638-MG</span>
+          </span>
         </div>
       </div>
     </footer>

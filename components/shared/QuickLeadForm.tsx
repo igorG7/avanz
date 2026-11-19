@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { Icon } from "@/components/ui/Icon";
 
@@ -30,6 +32,8 @@ export function QuickLeadForm({ variant = "hero" }: Props) {
     if (localizacao) linhas.push(`Região: ${localizacao}.`);
     if (preferencias) linhas.push(`Detalhes: ${preferencias}.`);
     const link = buildWhatsAppLink(linhas.join(" "));
+    // Só categorias fechadas: nada do que a pessoa digitou vai para o GA4.
+    track("generate_lead", { form: variant, tipo });
     window.open(link, "_blank", "noopener,noreferrer");
   }
 
@@ -99,6 +103,11 @@ export function QuickLeadForm({ variant = "hero" }: Props) {
         </button>
         <p className="text-center text-xs text-muted">
           Ao enviar, você inicia o atendimento pelo WhatsApp (canal principal).
+          O site não guarda esses dados. Veja a{" "}
+          <Link href="/privacidade" className="underline hover:text-navy">
+            política de privacidade
+          </Link>
+          .
         </p>
       </form>
     );
@@ -186,6 +195,11 @@ export function QuickLeadForm({ variant = "hero" }: Props) {
       </button>
       <p className="mt-3 text-center text-[11px] text-muted">
         Dica: quanto mais claro o objetivo, mais certeiras as opções que indicamos.
+      </p>
+      <p className="mt-1 text-center text-[11px] text-muted">
+        <Link href="/privacidade" className="underline hover:text-navy">
+          Política de privacidade
+        </Link>
       </p>
     </form>
   );
