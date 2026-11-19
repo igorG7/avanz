@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { listProperties } from "@/lib/api/imoveis";
 import type { Property } from "@/lib/api/types";
+import { empreendimentos } from "@/lib/content/empreendimentos";
 import { absoluteUrl } from "@/lib/site";
 
 const PAGE_SIZE = 50;
@@ -17,6 +18,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const imoveis = await carregarImoveis();
   return [
     ...fixas,
+    ...empreendimentos
+      .filter((e) => e.publicado)
+      .map((e) => ({
+        url: absoluteUrl(`/empreendimentos/${e.slug}`),
+        changeFrequency: "weekly" as const,
+        priority: 0.9,
+      })),
     ...imoveis.map((p) => ({
       url: absoluteUrl(`/imoveis/${p.slug}`),
       lastModified: p.updatedAt ? new Date(p.updatedAt) : undefined,
