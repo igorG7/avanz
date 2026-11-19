@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { listProperties } from "@/lib/api/imoveis";
 import type { Property } from "@/lib/api/types";
+import { cidadePath, cidades } from "@/lib/content/cidades";
 import { empreendimentos } from "@/lib/content/empreendimentos";
 import { absoluteUrl } from "@/lib/site";
 
@@ -18,6 +19,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const imoveis = await carregarImoveis();
   return [
     ...fixas,
+    ...cidades
+      .filter((c) => c.publicado)
+      .map((c) => ({
+        url: absoluteUrl(cidadePath(c)),
+        changeFrequency: "weekly" as const,
+        priority: 0.9,
+      })),
     ...empreendimentos
       .filter((e) => e.publicado)
       .map((e) => ({

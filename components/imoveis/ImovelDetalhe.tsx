@@ -57,6 +57,8 @@ export type ImovelDetalheProps = {
   /** Volta para a vitrine no mesmo estado (aba, filtros e página) em que o visitante estava. */
   voltarHref: string;
   voltarLabel: string;
+  /** Página do empreendimento a que o lote pertence, quando publicada. */
+  empreendimento?: { nome: string; href: string };
 };
 
 export function ImovelDetalhe({
@@ -81,6 +83,7 @@ export function ImovelDetalhe({
   similaresIntro,
   voltarHref,
   voltarLabel,
+  empreendimento,
 }: ImovelDetalheProps) {
   const ref = refMensagem || referencia;
   const ctaMessage = `Olá! Tenho interesse no ${descricaoCurta} (ref ${ref}).`;
@@ -182,6 +185,16 @@ export function ImovelDetalhe({
                   <p className="mt-4 rounded-card bg-offwhite p-4 text-xs leading-relaxed text-muted">
                     {aviso}
                   </p>
+                )}
+
+                {empreendimento && (
+                  <Link
+                    href={empreendimento.href}
+                    className="mt-4 flex items-center justify-between gap-3 rounded-card border border-line bg-offwhite p-4 text-sm font-semibold text-navy transition hover:border-orange/40 hover:text-orange-deep"
+                  >
+                    Conheça o empreendimento {empreendimento.nome}
+                    <Icon name="arrow-right" size={16} className="shrink-0" />
+                  </Link>
                 )}
 
                 <div className="mt-7 space-y-4">
