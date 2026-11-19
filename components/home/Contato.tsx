@@ -50,8 +50,8 @@ export function Contato() {
             </h2>
             <p className="mt-4 text-base leading-relaxed text-white/70 sm:text-lg">
               WhatsApp é o canal principal, resposta rápida com consultor
-              sênior. Se preferir, deixe seus dados no formulário e a gente
-              chama você.
+              sênior. Se preferir, deixe seus dados no formulário e
+              entramos em contato.
             </p>
 
             <ul className="mt-10 divide-y divide-white/10">

@@ -47,7 +47,7 @@ export function ImoveisGrid({
         {imoveis.length === 0 ? (
           <div className="mt-10 rounded-card border border-line bg-white p-10 text-center">
             <p className="text-muted">
-              Estamos atualizando o catálogo. Fale com a gente no WhatsApp que
+              Estamos atualizando o catálogo. Fale conosco no WhatsApp e
               mostramos as oportunidades do momento.
             </p>
           </div>
