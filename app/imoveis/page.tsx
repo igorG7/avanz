@@ -41,7 +41,7 @@ import {
 export const metadata: Metadata = {
   title: "Imóveis disponíveis",
   description:
-    "Lotes, sítios e chácaras da carteira própria da Avanz e da carteira de parceiros. Curadoria, financiamento próprio e atendimento humano.",
+    "Lotes, sítios e chácaras da carteira própria da Avanz e da carteira de parceiros. Consultoria, financiamento próprio e atendimento humano.",
   // Filtros, ordenação e paginação geram variações da mesma vitrine.
   alternates: { canonical: "/imoveis" },
 };
@@ -50,7 +50,7 @@ const PAGE_SIZE = 12;
 
 const HIGHLIGHTS = [
   { icon: "sliders" as const, label: "Filtre por cidade, tipo e faixa" },
-  { icon: "shield" as const, label: "Documentação verificada" },
+  { icon: "shield" as const, label: "Visita acompanhada por consultor" },
   { icon: "whatsapp" as const, label: "Confirma direto no WhatsApp" },
 ];
 
@@ -158,7 +158,7 @@ export default async function ImoveisPage({
               <CarteiraTabs atual={carteira} />
               <p className="max-w-md text-sm leading-relaxed text-muted">
                 {carteira === "propria"
-                  ? "Imóveis da carteira própria Avanz, com ficha completa e documentação verificada."
+                  ? "Imóveis da carteira própria Avanz, com ficha completa."
                   : "Unidades do nosso parceiro J.Lemara, lidas ao vivo do acervo dele."}
               </p>
             </div>
@@ -239,7 +239,7 @@ export default async function ImoveisPage({
 
         <FinalCTA
           title="Não achou o que procura?"
-          body="A gente faz a curadoria sob medida. Conta o que você busca e mostramos opções que fazem sentido."
+          body="Fazemos a busca sob medida. Conte o que você procura e mostramos opções que fazem sentido."
           ctaLabel="Pedir opções no WhatsApp"
           ctaMessage="Olá! Vi os imóveis no site mas quero opções mais específicas. Pode me ajudar?"
         />

@@ -17,6 +17,9 @@ import type { Pillar, Depoimento } from "@/lib/content/types";
 import { propertyToCard, type ImovelCardVM } from "@/lib/imoveis/view";
 
 export const metadata: Metadata = {
+  title: { absolute: "Lotes e terrenos na RMBH | Avanz Imóveis" },
+  description:
+    "Lotes, sítios e chácaras em Mateus Leme e na Região Metropolitana de BH, com consultoria imobiliária, atendimento direto e financiamento próprio.",
   alternates: { canonical: "/" },
 };
 
@@ -28,8 +31,8 @@ const pillars: Pillar[] = [
   },
   {
     icon: "compass",
-    title: "Curadoria por perfil",
-    body: "Você explica o que precisa. A gente filtra e apresenta opções coerentes.",
+    title: "Seleção por perfil",
+    body: "Você explica o que precisa. Nós filtramos e apresentamos opções coerentes.",
   },
   {
     icon: "eye",
@@ -51,7 +54,7 @@ const process = [
   },
   {
     icon: "compass" as const,
-    title: "Curadoria e proposta",
+    title: "Análise e proposta",
     body: "Selecionamos opções e alinhamos expectativas: terreno, loteamento, MCMV ou médio/alto padrão.",
   },
   {
@@ -73,24 +76,6 @@ const depoimentos: Depoimento[] = [
     nome: "Cliente Avanz",
     contexto: "compradora de lote",
   },
-  {
-    quote:
-      "Cheguei perdido com 30 anúncios na cabeça. Saí com 3 opções que faziam sentido pro meu bolso.",
-    nome: "Rafael C.",
-    contexto: "comprador de lote em Mateus Leme",
-  },
-  {
-    quote:
-      "Foi a primeira vez que alguém explicou os riscos antes de vender. Decisão sem medo.",
-    nome: "Patrícia M.",
-    contexto: "compradora de chácara em Igarapé",
-  },
-  {
-    quote:
-      "Financiamento próprio resolveu o que o banco não fez. Em duas semanas estava com a escritura.",
-    nome: "Eduardo S.",
-    contexto: "comprador de lote em Betim",
-  },
 ];
 
 export default async function Home() {
@@ -104,12 +89,11 @@ export default async function Home() {
           eyebrow="Avanz - Consultoria imobiliária · MG"
           headline={
             <>
-              Entender para atender. A compra do seu imóvel, com{" "}
-              <span className="text-orange-bright">clareza</span> e{" "}
-              <span className="text-orange-bright">direção</span>.
+              Lotes e terrenos na{" "}
+              <span className="text-orange-bright">RMBH</span>
             </>
           }
-          subhead="A Avanz trabalha com foco em terrenos e loteamentos, sem limitar seu perfil: do primeiro imóvel ao investimento, sempre com transparência e atenção."
+          subhead="Entender para atender. A compra do seu imóvel com clareza e direção, do primeiro lote ao investimento, sempre com transparência e atenção."
           ctaLabel="Falar agora"
           ctaMessage="Olá! Vim pelo site da Avanz. Quero entender as opções disponíveis."
           secondaryCtaLabel="Ver oportunidades"

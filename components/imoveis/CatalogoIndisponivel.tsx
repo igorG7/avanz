@@ -15,7 +15,7 @@ export function CatalogoIndisponivel({ mensagem }: { mensagem: string }) {
             Imóvel indisponível no momento
           </h1>
           <p className="mt-4 max-w-md text-base leading-relaxed text-muted">
-            {mensagem} Fale com um consultor que a gente confirma na hora.
+            {mensagem} Fale com um consultor e confirmamos na hora.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a

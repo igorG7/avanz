@@ -32,7 +32,9 @@ export function Testimonials({
           <span className="eyebrow">{eyebrow}</span>
           <h2 className="section-title mt-3">{title}</h2>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div
+          className={`mt-12 grid gap-6 ${depoimentos.length > 1 ? "md:grid-cols-2" : "max-w-3xl"}`}
+        >
           {depoimentos.map((d) => (
             <figure
               key={d.nome}

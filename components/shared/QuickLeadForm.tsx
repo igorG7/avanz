@@ -118,7 +118,7 @@ export function QuickLeadForm({ variant = "hero" }: Props) {
             Receber opções
           </h3>
           <p className="text-xs text-muted">
-            Preenche o básico e a gente chama no WhatsApp.
+            Preencha o básico e chamamos você no WhatsApp.
           </p>
         </div>
       </div>
@@ -185,7 +185,7 @@ export function QuickLeadForm({ variant = "hero" }: Props) {
         Continuar no WhatsApp
       </button>
       <p className="mt-3 text-center text-[11px] text-muted">
-        Dica: quanto mais claro o objetivo, melhor a curadoria.
+        Dica: quanto mais claro o objetivo, mais certeiras as opções que indicamos.
       </p>
     </form>
   );
