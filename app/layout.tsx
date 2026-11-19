@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import { unstable_ViewTransition as ViewTransition } from "react";
+import { Analytics } from "@/components/layout/Analytics";
 import { SITE_NAME, SITE_URL, organizationJsonLd } from "@/lib/site";
 import "./globals.css";
 
@@ -51,6 +52,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         <ViewTransition>{children}</ViewTransition>
+        <Analytics />
       </body>
     </html>
   );

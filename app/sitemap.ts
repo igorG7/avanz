@@ -12,6 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const fixas: MetadataRoute.Sitemap = [
     { url: absoluteUrl("/"), changeFrequency: "weekly", priority: 1 },
     { url: absoluteUrl("/imoveis"), changeFrequency: "daily", priority: 0.8 },
+    { url: absoluteUrl("/privacidade"), changeFrequency: "yearly", priority: 0.2 },
   ];
 
   const imoveis = await carregarImoveis();
