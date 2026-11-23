@@ -51,19 +51,24 @@ export const empreendimentos: Empreendimento[] = [
     publicado: false,
     // Rascunho tirado da landing estrela-do-sul.avanzimoveis.com.br em 23/11/2026.
     // Cada CONFIRMAR sai quando o comercial validar o item; publicar só sem nenhum.
-    // CONFIRMAR: "prontos para construir" depende da infraestrutura abaixo.
     beneficio:
       "Loteamento aberto em Mateus Leme, com lotes de 360 m² prontos para construir.",
     localizacao: {
-      mapa: "Loteamento Estrela do Sul, Mateus Leme MG",
-      // CONFIRMAR: as três distâncias.
+      mapa: "Bairro Estrela do Sul, Mateus Leme MG",
+      // Distâncias até o centro de cada cidade pelo Google Maps (23/11/2026).
       distancias: [
         {
-          titulo: "9 minutos do centro de Mateus Leme",
-          detalhe: "Comércio, escolas e serviços da cidade.",
+          titulo: "10 a 15 minutos do centro de Mateus Leme",
+          detalhe: "Cerca de 8 km pela LMG-821, até comércio, escolas e serviços.",
         },
-        { titulo: "60 km de Belo Horizonte", detalhe: "Acesso pela MG-050." },
-        { titulo: "35 km de Betim" },
+        {
+          titulo: "Cerca de 36 km de Betim",
+          detalhe: "Pela BR-262 e Rodovia Newton Penido, cerca de 40 minutos.",
+        },
+        {
+          titulo: "Cerca de 70 km de Belo Horizonte",
+          detalhe: "Pela BR-262 ou BR-381, cerca de 1h30 de carro.",
+        },
       ],
     },
     // CONFIRMAR: cada item já existe no local. Água não aparece na landing:
@@ -98,9 +103,8 @@ export const empreendimentos: Empreendimento[] = [
         a: "Não. O Estrela do Sul é um loteamento aberto, sem mensalidade de condomínio. O IPTU é cobrado pela Prefeitura de Mateus Leme conforme o tamanho do lote.",
       },
       {
-        // CONFIRMAR: depende da infraestrutura confirmada.
         q: "Posso começar a construir logo após a compra?",
-        a: "Sim, depois que o projeto da casa for aprovado pela Prefeitura de Mateus Leme.",
+        a: "Sim. Depois de assinar o contrato, você já pode começar a obra. Antes, aprove o projeto da casa na Prefeitura de Mateus Leme.",
       },
       {
         // CONFIRMAR: situação atual da área industrial próxima.
