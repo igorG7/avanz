@@ -13,7 +13,8 @@ export type Cidade = {
   /** Enquanto false, a página fica fora do sitemap, com noindex e sem link na home. */
   publicado: boolean;
   resumo?: string;
-  distanciaBH?: string;
+  /** Só o tempo de carro, sem quilometragem (decisão do Igor, 23/11/2026). */
+  tempoAteBH?: string;
   descricaoMeta?: string;
   /** Texto buscado no Google Maps para o mapa embutido. */
   mapa?: string;
@@ -28,10 +29,10 @@ export const cidades: Cidade[] = [
     publicado: false,
     // Rascunho tirado da landing do Estrela do Sul em 23/11/2026.
     // Cada CONFIRMAR sai quando o item for validado; publicar só sem nenhum.
-    // CONFIRMAR: distância de BH.
+    // Tempo até o centro de BH pelo Google Maps (23/11/2026).
     resumo:
-      "Cidade da Região Metropolitana de Belo Horizonte, com clima de interior e acesso direto à capital pela MG-050.",
-    distanciaBH: "60 km",
+      "Cidade da Região Metropolitana de Belo Horizonte, com clima de interior, a cerca de 1h30 de carro da capital.",
+    tempoAteBH: "Cerca de 1h30 de carro",
     mapa: "Mateus Leme MG",
     sobre: [
       {

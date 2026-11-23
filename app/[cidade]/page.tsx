@@ -73,7 +73,7 @@ export default async function CidadePage({
       rotulo: "Lotes a partir de",
       valor: formatPreco(Math.min(...precoMin)),
     },
-    c.distanciaBH && { rotulo: "Distância de BH", valor: c.distanciaBH },
+    c.tempoAteBH && { rotulo: "Até Belo Horizonte", valor: c.tempoAteBH },
   ].filter(Boolean) as { rotulo: string; valor: string }[];
 
   return (
