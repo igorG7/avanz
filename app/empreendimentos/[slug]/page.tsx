@@ -213,11 +213,13 @@ export default async function EmpreendimentoPage({
                   .map((b) => (
                     <div key={b.titulo} className="rounded-card border border-line bg-white p-6">
                       <h3 className="font-display text-lg font-semibold text-navy">{b.titulo}</h3>
-                      <ul className="mt-4 grid gap-2">
+                      <ul className="mt-4 grid gap-3">
                         {b.itens!.map((item) => (
-                          <li key={item} className="flex items-start gap-2 text-ink">
-                            <Icon name="check" size={16} className="mt-1 shrink-0 text-orange-deep" />
-                            {item}
+                          <li key={item.texto} className="flex items-center gap-3 text-ink">
+                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange/10 text-orange-deep">
+                              <Icon name={item.icone} size={18} />
+                            </span>
+                            {item.texto}
                           </li>
                         ))}
                       </ul>
