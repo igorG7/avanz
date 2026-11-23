@@ -196,7 +196,7 @@ export default async function CidadePage({
                         </td>
                         <td className="px-5 py-4">{resumo.metragem ?? "Sob consulta"}</td>
                         <td className="px-5 py-4">{resumo.aPartirDe ?? "Sob consulta"}</td>
-                        <td className="px-5 py-4">{emp.infraestrutura?.join(", ") || "Com o consultor"}</td>
+                        <td className="px-5 py-4">{emp.infraestrutura?.map((i) => i.texto).join(", ") || "Com o consultor"}</td>
                         <td className="px-5 py-4">{resumo.quantidade || "Sob consulta"}</td>
                       </tr>
                     ))}
