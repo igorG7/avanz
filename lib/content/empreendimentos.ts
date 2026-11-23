@@ -83,8 +83,9 @@ export const empreendimentos: Empreendimento[] = [
       { texto: "Vista aberta", icone: "eye" },
       { texto: "Loteamento aberto, sem condomínio", icone: "map" },
     ],
-    // CONFIRMAR: entrada, prazo e a data dos valores; a parcela veio da landing.
+    // CONFIRMAR: prazo total e a data dos valores; a parcela veio da landing.
     condicoes: {
+      entrada: "Em até 10x, no valor da parcela",
       parcelas: "A partir de R$ 800",
       validoEm: "[data a confirmar]",
     },
