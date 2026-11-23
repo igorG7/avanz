@@ -49,8 +49,8 @@ export const empreendimentos: Empreendimento[] = [
     cidade: "Mateus Leme",
     development: "Estrela do Sul",
     publicado: false,
-    // Rascunho tirado da landing estrela-do-sul.avanzimoveis.com.br em 23/11/2026.
-    // Cada CONFIRMAR sai quando o comercial validar o item; publicar só sem nenhum.
+    // Conteúdo tirado da landing estrela-do-sul.avanzimoveis.com.br e confirmado
+    // item a item com o Igor em 23/11/2026.
     beneficio:
       "Loteamento aberto em Mateus Leme, com lotes de 360 m² prontos para construir.",
     localizacao: {
@@ -108,9 +108,8 @@ export const empreendimentos: Empreendimento[] = [
         a: "Sim. Depois de assinar o contrato, você já pode começar a obra. Antes, aprove o projeto da casa na Prefeitura de Mateus Leme.",
       },
       {
-        // CONFIRMAR: situação atual da área industrial próxima.
         q: "Os lotes perto da área industrial servem para negócio?",
-        a: "Podem servir para galpão, comércio de bairro ou investimento. Confira o zoneamento na Prefeitura de Mateus Leme conforme a finalidade.",
+        a: "A área industrial próxima está em desenvolvimento, e os lotes ao redor podem servir para galpão, comércio de bairro ou investimento. Confira o zoneamento na Prefeitura de Mateus Leme conforme a finalidade.",
       },
       {
         q: "Como funciona a visita?",
