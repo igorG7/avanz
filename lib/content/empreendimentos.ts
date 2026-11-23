@@ -51,15 +51,21 @@ export const empreendimentos: Empreendimento[] = [
     beneficio:
       "Loteamento aberto em Mateus Leme, com lotes de 360 m² prontos para construir.",
     localizacao: {
-      mapa: "Loteamento Estrela do Sul, Mateus Leme MG",
-      // CONFIRMAR: as três distâncias.
+      mapa: "Bairro Estrela do Sul, Mateus Leme MG",
+      // Distâncias até o centro de cada cidade pelo Google Maps (23/11/2026).
       distancias: [
         {
-          titulo: "9 minutos do centro de Mateus Leme",
-          detalhe: "Comércio, escolas e serviços da cidade.",
+          titulo: "10 a 15 minutos do centro de Mateus Leme",
+          detalhe: "Cerca de 8 km pela LMG-821, até comércio, escolas e serviços.",
         },
-        { titulo: "60 km de Belo Horizonte", detalhe: "Acesso pela MG-050." },
-        { titulo: "35 km de Betim" },
+        {
+          titulo: "Cerca de 36 km de Betim",
+          detalhe: "Pela BR-262 e Rodovia Newton Penido, cerca de 40 minutos.",
+        },
+        {
+          titulo: "Cerca de 70 km de Belo Horizonte",
+          detalhe: "Pela BR-262 ou BR-381, cerca de 1h30 de carro.",
+        },
       ],
     },
     // CONFIRMAR: cada item já existe no local. Água não aparece na landing:
