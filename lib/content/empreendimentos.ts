@@ -68,10 +68,9 @@ export const empreendimentos: Empreendimento[] = [
         },
       ],
     },
-    // CONFIRMAR: cada item já existe no local. Água não aparece na landing:
-    // entra só se já estiver encanada.
+    // Água: sem informação em 23/11/2026; entra só se já estiver encanada.
     infraestrutura: [
-      "Pavimentação concluída",
+      "Ruas calçadas",
       "Energia Cemig",
       "Internet por fibra óptica",
     ],
