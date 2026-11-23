@@ -26,6 +26,26 @@ export const cidades: Cidade[] = [
     slug: "mateus-leme",
     nome: "Mateus Leme",
     publicado: false,
+    // Rascunho tirado da landing do Estrela do Sul em 23/11/2026.
+    // Cada CONFIRMAR sai quando o item for validado; publicar só sem nenhum.
+    // CONFIRMAR: distância de BH.
+    resumo:
+      "Cidade da Região Metropolitana de Belo Horizonte, com clima de interior e acesso direto à capital pela MG-050.",
+    distanciaBH: "60 km",
+    mapa: "Mateus Leme MG",
+    sobre: [
+      {
+        titulo: "Acessos",
+        texto: "MG-050 duplicada, com vias marginais e ligação com a BR-381, a BR-262 e o Anel Rodoviário de Belo Horizonte.",
+      },
+      {
+        // CONFIRMAR: "lagoas na cidade" (a landing fala em quatro).
+        titulo: "Natureza",
+        texto: "Clima de interior, áreas verdes e lagoas na cidade, para quem quer morar com mais tranquilidade sem se afastar da capital.",
+      },
+      // Faltam: "Serviços" (escolas, saúde, comércio) e "Perfil de quem compra",
+      // que o comercial conhece. "Crescimento" só com fonte.
+    ],
   },
 ];
 
