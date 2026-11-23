@@ -78,9 +78,8 @@ export const empreendimentos: Empreendimento[] = [
       { texto: "Energia Cemig", icone: "bolt" },
       { texto: "Internet por fibra óptica", icone: "wifi" },
     ],
-    // CONFIRMAR: topografia e vista.
     terreno: [
-      { texto: "Lotes planos a levemente inclinados", icone: "mountain" },
+      { texto: "Lotes planos, em leve aclive e em aclive", icone: "mountain" },
       { texto: "Vista aberta", icone: "eye" },
       { texto: "Loteamento aberto, sem condomínio", icone: "map" },
     ],
