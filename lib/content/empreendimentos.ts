@@ -1,4 +1,5 @@
 import type { FAQItem } from "@/components/shared/FAQ";
+import type { IconName } from "@/components/ui/Icon";
 
 /**
  * Conteúdo editorial de cada empreendimento. Os lotes não ficam aqui: vêm da
@@ -10,6 +11,8 @@ import type { FAQItem } from "@/components/shared/FAQ";
  * - condições mostram entrada, parcela e prazo, sem juros nem reajuste;
  * - campo vazio esconde a seção; nunca preencher com texto genérico.
  */
+export type ItemFicha = { texto: string; icone: IconName };
+
 export type Empreendimento = {
   slug: string;
   nome: string;
@@ -25,8 +28,8 @@ export type Empreendimento = {
     mapa?: string;
     distancias: { titulo: string; detalhe?: string }[];
   };
-  infraestrutura?: string[];
-  terreno?: string[];
+  infraestrutura?: ItemFicha[];
+  terreno?: ItemFicha[];
   fotos?: { src: string; alt: string }[];
   condicoes?: {
     entrada?: string;
@@ -68,17 +71,18 @@ export const empreendimentos: Empreendimento[] = [
         },
       ],
     },
-    // Água: sem informação em 23/11/2026; entra só se já estiver encanada.
+    // Água: sem informação em 23/11/2026; entra só se já estiver encanada,
+    // com o ícone "droplet".
     infraestrutura: [
-      "Ruas calçadas",
-      "Energia Cemig",
-      "Internet por fibra óptica",
+      { texto: "Ruas calçadas", icone: "road" },
+      { texto: "Energia Cemig", icone: "bolt" },
+      { texto: "Internet por fibra óptica", icone: "wifi" },
     ],
     // CONFIRMAR: topografia e vista.
     terreno: [
-      "Lotes planos a levemente inclinados",
-      "Vista aberta",
-      "Loteamento aberto, sem condomínio",
+      { texto: "Lotes planos a levemente inclinados", icone: "mountain" },
+      { texto: "Vista aberta", icone: "eye" },
+      { texto: "Loteamento aberto, sem condomínio", icone: "map" },
     ],
     // CONFIRMAR: entrada, prazo e a data dos valores; a parcela veio da landing.
     condicoes: {
