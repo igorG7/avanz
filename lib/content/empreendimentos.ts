@@ -83,11 +83,12 @@ export const empreendimentos: Empreendimento[] = [
       { texto: "Vista aberta", icone: "eye" },
       { texto: "Loteamento aberto, sem condomínio", icone: "map" },
     ],
-    // CONFIRMAR: prazo total e a data dos valores; a parcela veio da landing.
+    // Prazo total ainda sem informação: sem ele, a linha não aparece.
+    // Atualizar `validoEm` sempre que os valores mudarem.
     condicoes: {
       entrada: "Em até 10x, a partir de R$ 800",
       parcelas: "A partir de R$ 800",
-      validoEm: "[data a confirmar]",
+      validoEm: "23/11/2026",
     },
     faq: [
       {
