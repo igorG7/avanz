@@ -52,8 +52,8 @@ export const empreendimentos: Empreendimento[] = [
     cidadeSlug: "mateus-leme",
     development: "Estrela do Sul",
     publicado: false,
-    // Rascunho tirado da landing estrela-do-sul.avanzimoveis.com.br em 23/11/2026.
-    // Cada CONFIRMAR sai quando o comercial validar o item; publicar só sem nenhum.
+    // Conteúdo tirado da landing estrela-do-sul.avanzimoveis.com.br e confirmado
+    // item a item com o Igor em 23/11/2026.
     beneficio:
       "Loteamento aberto em Mateus Leme, com lotes de 360 m² prontos para construir.",
     localizacao: {
@@ -81,16 +81,17 @@ export const empreendimentos: Empreendimento[] = [
       { texto: "Energia Cemig", icone: "bolt" },
       { texto: "Internet por fibra óptica", icone: "wifi" },
     ],
-    // CONFIRMAR: topografia e vista.
     terreno: [
-      { texto: "Lotes planos a levemente inclinados", icone: "mountain" },
+      { texto: "Lotes planos, em leve aclive e em aclive", icone: "mountain" },
       { texto: "Vista aberta", icone: "eye" },
       { texto: "Loteamento aberto, sem condomínio", icone: "map" },
     ],
-    // CONFIRMAR: entrada, prazo e a data dos valores; a parcela veio da landing.
+    // Prazo total ainda sem informação: sem ele, a linha não aparece.
+    // Atualizar `validoEm` sempre que os valores mudarem.
     condicoes: {
+      entrada: "Em até 10x, a partir de R$ 800",
       parcelas: "A partir de R$ 800",
-      validoEm: "[data a confirmar]",
+      validoEm: "23/11/2026",
     },
     faq: [
       {
@@ -110,9 +111,8 @@ export const empreendimentos: Empreendimento[] = [
         a: "Sim. Depois de assinar o contrato, você já pode começar a obra. Antes, aprove o projeto da casa na Prefeitura de Mateus Leme.",
       },
       {
-        // CONFIRMAR: situação atual da área industrial próxima.
         q: "Os lotes perto da área industrial servem para negócio?",
-        a: "Podem servir para galpão, comércio de bairro ou investimento. Confira o zoneamento na Prefeitura de Mateus Leme conforme a finalidade.",
+        a: "A área industrial próxima está em desenvolvimento, e os lotes ao redor podem servir para galpão, comércio de bairro ou investimento. Confira o zoneamento na Prefeitura de Mateus Leme conforme a finalidade.",
       },
       {
         q: "Como funciona a visita?",
