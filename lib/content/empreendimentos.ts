@@ -46,6 +46,69 @@ export const empreendimentos: Empreendimento[] = [
     cidade: "Mateus Leme",
     development: "Estrela do Sul",
     publicado: false,
+    // Rascunho tirado da landing estrela-do-sul.avanzimoveis.com.br em 23/11/2026.
+    // Cada CONFIRMAR sai quando o comercial validar o item; publicar só sem nenhum.
+    // CONFIRMAR: "prontos para construir" depende da infraestrutura abaixo.
+    beneficio:
+      "Loteamento aberto em Mateus Leme, com lotes de 360 m² prontos para construir.",
+    localizacao: {
+      mapa: "Loteamento Estrela do Sul, Mateus Leme MG",
+      // CONFIRMAR: as três distâncias.
+      distancias: [
+        {
+          titulo: "9 minutos do centro de Mateus Leme",
+          detalhe: "Comércio, escolas e serviços da cidade.",
+        },
+        { titulo: "60 km de Belo Horizonte", detalhe: "Acesso pela MG-050." },
+        { titulo: "35 km de Betim" },
+      ],
+    },
+    // CONFIRMAR: cada item já existe no local. Água não aparece na landing:
+    // entra só se já estiver encanada.
+    infraestrutura: [
+      "Pavimentação concluída",
+      "Energia Cemig",
+      "Internet por fibra óptica",
+    ],
+    // CONFIRMAR: topografia e vista.
+    terreno: [
+      "Lotes planos a levemente inclinados",
+      "Vista aberta",
+      "Loteamento aberto, sem condomínio",
+    ],
+    // CONFIRMAR: entrada, prazo e a data dos valores; a parcela veio da landing.
+    condicoes: {
+      parcelas: "A partir de R$ 800",
+      validoEm: "[data a confirmar]",
+    },
+    faq: [
+      {
+        q: "Posso usar FGTS na compra do lote?",
+        a: "Como o pagamento é feito direto com a loteadora, o FGTS não entra na compra do lote. Depois de quitar o lote, o FGTS pode ser usado na construção, junto com financiamento bancário. O consultor explica o seu caso.",
+      },
+      {
+        q: "Quando a escritura sai no meu nome?",
+        a: "Durante o pagamento, você assina um contrato particular de compra e venda. A escritura é transferida para o seu nome após a quitação total do lote.",
+      },
+      {
+        q: "Tem taxa de condomínio?",
+        a: "Não. O Estrela do Sul é um loteamento aberto, sem mensalidade de condomínio. O IPTU é cobrado pela Prefeitura de Mateus Leme conforme o tamanho do lote.",
+      },
+      {
+        // CONFIRMAR: depende da infraestrutura confirmada.
+        q: "Posso começar a construir logo após a compra?",
+        a: "Sim, depois que o projeto da casa for aprovado pela Prefeitura de Mateus Leme.",
+      },
+      {
+        // CONFIRMAR: situação atual da área industrial próxima.
+        q: "Os lotes perto da área industrial servem para negócio?",
+        a: "Podem servir para galpão, comércio de bairro ou investimento. Confira o zoneamento na Prefeitura de Mateus Leme conforme a finalidade.",
+      },
+      {
+        q: "Como funciona a visita?",
+        a: "Agendamos pelo WhatsApp. Um consultor acompanha você até o lote, mostra a infraestrutura e a vizinhança e tira dúvidas no local, sem compromisso de compra.",
+      },
+    ],
   },
 ];
 
