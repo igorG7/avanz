@@ -85,7 +85,7 @@ export const empreendimentos: Empreendimento[] = [
     ],
     // CONFIRMAR: prazo total e a data dos valores; a parcela veio da landing.
     condicoes: {
-      entrada: "Em até 10x de R$ 800",
+      entrada: "Em até 10x, a partir de R$ 800",
       parcelas: "A partir de R$ 800",
       validoEm: "[data a confirmar]",
     },
