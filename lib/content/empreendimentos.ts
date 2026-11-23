@@ -48,7 +48,6 @@ export const empreendimentos: Empreendimento[] = [
     publicado: false,
     // Rascunho tirado da landing estrela-do-sul.avanzimoveis.com.br em 23/11/2026.
     // Cada CONFIRMAR sai quando o comercial validar o item; publicar só sem nenhum.
-    // CONFIRMAR: "prontos para construir" depende da infraestrutura abaixo.
     beneficio:
       "Loteamento aberto em Mateus Leme, com lotes de 360 m² prontos para construir.",
     localizacao: {
@@ -95,9 +94,8 @@ export const empreendimentos: Empreendimento[] = [
         a: "Não. O Estrela do Sul é um loteamento aberto, sem mensalidade de condomínio. O IPTU é cobrado pela Prefeitura de Mateus Leme conforme o tamanho do lote.",
       },
       {
-        // CONFIRMAR: depende da infraestrutura confirmada.
         q: "Posso começar a construir logo após a compra?",
-        a: "Sim, depois que o projeto da casa for aprovado pela Prefeitura de Mateus Leme.",
+        a: "Sim. Depois de assinar o contrato, você já pode começar a obra. Antes, aprove o projeto da casa na Prefeitura de Mateus Leme.",
       },
       {
         // CONFIRMAR: situação atual da área industrial próxima.
