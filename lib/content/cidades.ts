@@ -13,6 +13,8 @@ export type Cidade = {
   /** Enquanto false, a página fica fora do sitemap, com noindex e sem link na home. */
   publicado: boolean;
   resumo?: string;
+  /** Foto de fundo do hero; o texto fica sobre uma camada escura. */
+  capa?: string;
   /** Só o tempo de carro, sem quilometragem (decisão do Igor, 23/11/2026). */
   tempoAteBH?: string;
   descricaoMeta?: string;
@@ -32,6 +34,7 @@ export const cidades: Cidade[] = [
     resumo:
       "Cidade da Região Metropolitana de Belo Horizonte, com clima de interior, a cerca de 1h30 de carro da capital.",
     tempoAteBH: "Cerca de 1h30 de carro",
+    capa: "/images/cidades/mateus-leme/vista-montanhas.webp",
     mapa: "Mateus Leme MG",
     sobre: [
       {

@@ -5,6 +5,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloating } from "@/components/layout/WhatsAppFloating";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
+import Image from "next/image";
+import { CapaDeFundo } from "@/components/shared/CapaDeFundo";
 import { FAQ, type FAQItem } from "@/components/shared/FAQ";
 import { FinalCTA } from "@/components/shared/FinalCTA";
 import { Icon } from "@/components/ui/Icon";
@@ -82,7 +84,8 @@ export default async function CidadePage({
       <Header />
       <main>
         {/* 01 · Hero + panorama */}
-        <section className="bg-navy text-white">
+        <section className="relative isolate overflow-hidden bg-navy text-white">
+          {c.capa && <CapaDeFundo src={c.capa} />}
           <div className="container-content py-16 sm:py-20">
             <nav aria-label="Trilha" className="text-xs text-white/60">
               <Link href="/" className="hover:text-white">Início</Link>
@@ -138,8 +141,20 @@ export default async function CidadePage({
                   <Link
                     key={emp.slug}
                     href={`/empreendimentos/${emp.slug}`}
-                    className="group flex flex-col rounded-card border border-line bg-white p-6 transition hover:-translate-y-0.5 hover:border-orange/40 hover:shadow-card"
+                    className="group flex flex-col overflow-hidden rounded-card border border-line bg-white transition hover:-translate-y-0.5 hover:border-orange/40 hover:shadow-card"
                   >
+                    {emp.capa && (
+                      <div className="relative aspect-[16/10]">
+                        <Image
+                          src={emp.capa}
+                          alt={`Vista do loteamento ${emp.nome}`}
+                          fill
+                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="flex flex-1 flex-col p-6">
                     <h3 className="font-display text-xl font-semibold text-navy">{emp.nome}</h3>
                     <p className="mt-2 text-sm text-muted">
                       {[
@@ -155,10 +170,11 @@ export default async function CidadePage({
                     {emp.beneficio && (
                       <p className="mt-3 text-sm leading-relaxed text-ink">{emp.beneficio}</p>
                     )}
-                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-orange-deep group-hover:text-orange">
+                    <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-semibold text-orange-deep group-hover:text-orange">
                       Ver o empreendimento
                       <Icon name="arrow-right" size={16} />
                     </span>
+                    </div>
                   </Link>
                 ))}
               </div>

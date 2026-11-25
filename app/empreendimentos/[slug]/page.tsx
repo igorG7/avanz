@@ -9,6 +9,7 @@ import { ImoveisGrid } from "@/components/imoveis/ImoveisGrid";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { Testimonials } from "@/components/shared/Testimonials";
 import { FAQ } from "@/components/shared/FAQ";
+import { CapaDeFundo } from "@/components/shared/CapaDeFundo";
 import { FinalCTA } from "@/components/shared/FinalCTA";
 import { Icon } from "@/components/ui/Icon";
 import { cidadePath, cidadeVisivelPara } from "@/lib/content/cidades";
@@ -79,19 +80,7 @@ export default async function EmpreendimentoPage({
       <main>
         {/* 01 · Hero + resumo */}
         <section className="relative isolate overflow-hidden bg-navy text-white">
-          {emp.capa && (
-            <div className="absolute inset-0 -z-10">
-              <Image
-                src={emp.capa}
-                alt=""
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover opacity-50"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/75 to-navy" />
-            </div>
-          )}
+          {emp.capa && <CapaDeFundo src={emp.capa} />}
           <div className="container-content py-16 sm:py-20">
             <nav aria-label="Trilha" className="text-xs text-white/60">
               <Link href="/" className="hover:text-white">Início</Link>
