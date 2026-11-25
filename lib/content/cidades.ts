@@ -62,7 +62,12 @@ export const cidades: Cidade[] = [
         titulo: "Quem compra aqui",
         texto: "Famílias que querem morar com mais tranquilidade sem perder o acesso à capital, e quem compra para investir, seja para revender no futuro ou para construir e alugar.",
       },
-      // "Crescimento" só entra com fonte (IBGE, prefeitura).
+      {
+        // IBGE, tabelas 1378 e 4709 (Censos 2010 e 2022), consultadas em 25/11/2026.
+        // PIB fica de fora: valor nominal, sem descontar a inflação.
+        titulo: "Crescimento",
+        texto: "Entre os Censos de 2010 e 2022, a população de Mateus Leme passou de 27.856 para 37.841 habitantes, um crescimento de 36%. No mesmo período, Minas Gerais cresceu 5%. Fonte: IBGE.",
+      },
     ],
     // Pergunta de financiamento direto com o loteador espera a resposta do Ivan
     // sobre "sem análise bancária". A dos loteamentos à venda é montada pela
@@ -79,6 +84,10 @@ export const cidades: Cidade[] = [
       {
         q: "Para quem é indicado comprar lote em Mateus Leme?",
         a: "Para famílias que querem morar com mais tranquilidade sem perder o acesso à capital, e para quem compra para investir, seja para revender no futuro ou para construir e alugar.",
+      },
+      {
+        q: "Mateus Leme está crescendo?",
+        a: "Sim. Pelos Censos do IBGE, a população passou de 27.856 habitantes em 2010 para 37.841 em 2022, um crescimento de 36%. No mesmo período, Minas Gerais cresceu 5%.",
       },
     ],
   },
