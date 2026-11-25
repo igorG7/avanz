@@ -78,7 +78,20 @@ export default async function EmpreendimentoPage({
       <Header />
       <main>
         {/* 01 · Hero + resumo */}
-        <section className="bg-navy text-white">
+        <section className="relative isolate overflow-hidden bg-navy text-white">
+          {emp.capa && (
+            <div className="absolute inset-0 -z-10">
+              <Image
+                src={emp.capa}
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover opacity-50"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/75 to-navy" />
+            </div>
+          )}
           <div className="container-content py-16 sm:py-20">
             <nav aria-label="Trilha" className="text-xs text-white/60">
               <Link href="/" className="hover:text-white">Início</Link>
@@ -239,10 +252,10 @@ export default async function EmpreendimentoPage({
             <div className="container-content py-20">
               <span className="eyebrow">Fotos</span>
               <h2 className="section-title mt-3">O {emp.nome} por dentro</h2>
-              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-10 grid gap-4 sm:grid-cols-2">
                 {emp.fotos.map((f) => (
-                  <div key={f.src} className="relative aspect-[4/3] overflow-hidden rounded-card">
-                    <Image src={f.src} alt={f.alt} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+                  <div key={f.src} className="relative aspect-[16/10] overflow-hidden rounded-card">
+                    <Image src={f.src} alt={f.alt} fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" />
                   </div>
                 ))}
               </div>

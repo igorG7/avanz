@@ -24,6 +24,8 @@ export type Empreendimento = {
   /** Enquanto false, a página fica fora do sitemap e com noindex. */
   publicado: boolean;
   beneficio?: string;
+  /** Foto de fundo do hero; o texto fica sobre uma camada escura. */
+  capa?: string;
   descricaoMeta?: string;
   localizacao?: {
     /** Texto buscado no Google Maps para o mapa embutido. */
@@ -56,6 +58,7 @@ export const empreendimentos: Empreendimento[] = [
     // item a item com o Igor em 23/11/2026.
     beneficio:
       "Loteamento aberto em Mateus Leme, com lotes de 360 m² prontos para construir.",
+    capa: "/images/empreendimentos/estrela-do-sul/aereo-top-completo.webp",
     localizacao: {
       mapa: "Bairro Estrela do Sul, Mateus Leme MG",
       // Distâncias até o centro de cada cidade pelo Google Maps (23/11/2026).
@@ -86,6 +89,43 @@ export const empreendimentos: Empreendimento[] = [
       { texto: "Vista aberta", icone: "eye" },
       { texto: "Loteamento aberto, sem condomínio", icone: "map" },
     ],
+    // Fotos do repo das landings (igorG7/avanz-imoveis). De fora: drone-poster
+    // (marca d'água "movavi") e entrada-castelinho (placa com telefone e site
+    // de terceiro, a confirmar).
+    fotos: [
+      {
+        src: "/images/empreendimentos/estrela-do-sul/aereo-top-completo.webp",
+        alt: "Vista aérea do loteamento Estrela do Sul, com as ruas abertas entre a vegetação",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/estrela-sul-1.webp",
+        alt: "Rua calçada e lotes do Estrela do Sul, em Mateus Leme",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/estrela-sul-3.webp",
+        alt: "Lote do Estrela do Sul entre pinheiros, com vista aberta",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/aereo-industrial.webp",
+        alt: "Vista aérea do Estrela do Sul com a área industrial próxima",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/estrela-sul-2.webp",
+        alt: "Ruas calçadas do Estrela do Sul com montanhas ao fundo",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/drone-industrial-2.webp",
+        alt: "Quadras do Estrela do Sul vistas de cima, com as ruas calçadas",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/estrela-sul-5.webp",
+        alt: "Lote plano do Estrela do Sul entre árvores",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/vista-montanhas.webp",
+        alt: "Vista aérea da região do Estrela do Sul, com o vale e as montanhas de Mateus Leme",
+      },
+    ],
     // Prazo total ainda sem informação: sem ele, a linha não aparece.
     // Atualizar `validoEm` sempre que os valores mudarem.
     condicoes: {
@@ -108,7 +148,7 @@ export const empreendimentos: Empreendimento[] = [
       },
       {
         q: "Posso começar a construir logo após a compra?",
-        a: "Sim. Depois de assinar o contrato, você já pode começar a obra. Antes, aprove o projeto da casa na Prefeitura de Mateus Leme.",
+        a: "Sim. Depois de assinar o contrato, você já pode começar a obra.",
       },
       {
         q: "Os lotes perto da área industrial servem para negócio?",
