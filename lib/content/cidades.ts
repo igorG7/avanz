@@ -61,6 +61,27 @@ export const cidades: Cidade[] = [
       },
       // "Crescimento" só entra com fonte (IBGE, prefeitura).
     ],
+    // Pergunta de financiamento direto com o loteador espera a resposta do Ivan
+    // sobre "sem análise bancária". A dos loteamentos precisa ser atualizada
+    // quando entrar outro empreendimento da cidade.
+    faq: [
+      {
+        q: "Quanto tempo leva de Mateus Leme até Belo Horizonte?",
+        a: "Cerca de 1h30 de carro até o centro de BH, pela BR-262 ou pela BR-381.",
+      },
+      {
+        q: "A cidade tem hospital e escolas?",
+        a: "Sim. Mateus Leme tem a UPA, o Hospital Santa Terezinha, centros de saúde e clínicas, além de escolas municipais, estaduais e particulares.",
+      },
+      {
+        q: "Para quem é indicado comprar lote em Mateus Leme?",
+        a: "Para famílias que querem morar com mais tranquilidade sem perder o acesso à capital, e para quem compra para investir, seja para revender no futuro ou para construir e alugar.",
+      },
+      {
+        q: "Quais loteamentos têm lotes à venda?",
+        a: "Hoje a Avanz tem lotes no Estrela do Sul. Veja os lotes disponíveis na página do loteamento ou fale com um consultor para conhecer as opções do momento.",
+      },
+    ],
   },
 ];
 
