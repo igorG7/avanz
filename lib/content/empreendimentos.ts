@@ -83,6 +83,43 @@ export const empreendimentos: Empreendimento[] = [
       { texto: "Vista aberta", icone: "eye" },
       { texto: "Loteamento aberto, sem condomínio", icone: "map" },
     ],
+    // Fotos do repo das landings (igorG7/avanz-imoveis). De fora: drone-poster
+    // (marca d'água "movavi") e entrada-castelinho (placa com telefone e site
+    // de terceiro, a confirmar).
+    fotos: [
+      {
+        src: "/images/empreendimentos/estrela-do-sul/aereo-top-completo.webp",
+        alt: "Vista aérea do loteamento Estrela do Sul, com as ruas abertas entre a vegetação",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/estrela-sul-1.webp",
+        alt: "Rua calçada e lotes do Estrela do Sul, em Mateus Leme",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/estrela-sul-3.webp",
+        alt: "Lote do Estrela do Sul entre pinheiros, com vista aberta",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/aereo-industrial.webp",
+        alt: "Vista aérea do Estrela do Sul com a área industrial próxima",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/estrela-sul-2.webp",
+        alt: "Ruas calçadas do Estrela do Sul com montanhas ao fundo",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/drone-industrial-2.webp",
+        alt: "Quadras do Estrela do Sul vistas de cima, com as ruas calçadas",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/estrela-sul-5.webp",
+        alt: "Lote plano do Estrela do Sul entre árvores",
+      },
+      {
+        src: "/images/empreendimentos/estrela-do-sul/vista-montanhas.webp",
+        alt: "Vista aérea da região do Estrela do Sul, com o vale e as montanhas de Mateus Leme",
+      },
+    ],
     // Prazo total ainda sem informação: sem ele, a linha não aparece.
     // Atualizar `validoEm` sempre que os valores mudarem.
     condicoes: {
