@@ -22,6 +22,8 @@ export type Empreendimento = {
   /** Enquanto false, a página fica fora do sitemap e com noindex. */
   publicado: boolean;
   beneficio?: string;
+  /** Foto de fundo do hero; o texto fica sobre uma camada escura. */
+  capa?: string;
   descricaoMeta?: string;
   localizacao?: {
     /** Texto buscado no Google Maps para o mapa embutido. */
@@ -53,6 +55,7 @@ export const empreendimentos: Empreendimento[] = [
     // item a item com o Igor em 23/11/2026.
     beneficio:
       "Loteamento aberto em Mateus Leme, com lotes de 360 m² prontos para construir.",
+    capa: "/images/empreendimentos/estrela-do-sul/aereo-top-completo.webp",
     localizacao: {
       mapa: "Bairro Estrela do Sul, Mateus Leme MG",
       // Distâncias até o centro de cada cidade pelo Google Maps (23/11/2026).
