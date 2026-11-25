@@ -45,8 +45,18 @@ export const cidades: Cidade[] = [
         titulo: "Natureza",
         texto: "A Serra do Elefante, Monumento Natural do município, tem mirante, trilhas e cachoeira. Aos pés da serra fica o Parque Ecológico Reserva da Serra.",
       },
-      // Faltam: "Serviços" (escolas, saúde, comércio) e "Perfil de quem compra",
-      // que o comercial conhece. "Crescimento" só com fonte.
+      // Serviços informados pelo Igor em 25/11/2026; sem nome de marca de
+      // propósito, porque envelhece rápido e sugere relação com a Avanz.
+      {
+        titulo: "Saúde e educação",
+        texto: "UPA de Mateus Leme, Hospital Santa Terezinha, centros de saúde e clínicas. Escolas municipais, estaduais e particulares.",
+      },
+      {
+        titulo: "Comércio",
+        texto: "Supermercados locais e de rede, farmácias, lojas, agências bancárias e serviços do dia a dia, concentrados no centro da cidade.",
+      },
+      // Falta "Perfil de quem compra", que o comercial conhece.
+      // "Crescimento" só com fonte.
     ],
   },
 ];
