@@ -55,8 +55,11 @@ export const cidades: Cidade[] = [
         titulo: "Comércio",
         texto: "Supermercados locais e de rede, farmácias, lojas, agências bancárias e serviços do dia a dia, concentrados no centro da cidade.",
       },
-      // Falta "Perfil de quem compra", que o comercial conhece.
-      // "Crescimento" só com fonte.
+      {
+        titulo: "Quem compra aqui",
+        texto: "Famílias que querem morar com mais tranquilidade sem perder o acesso à capital, e quem compra para investir, seja para revender no futuro ou para construir e alugar.",
+      },
+      // "Crescimento" só entra com fonte (IBGE, prefeitura).
     ],
   },
 ];
