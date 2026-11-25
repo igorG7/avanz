@@ -242,7 +242,7 @@ export default async function CidadePage({
                     title={`Mapa de ${c.nome}`}
                     src={`https://www.google.com/maps?q=${encodeURIComponent(c.mapa)}&output=embed`}
                     loading="lazy"
-                    className="h-80 w-full rounded-card border border-line"
+                    className="h-80 w-full rounded-card border border-line md:sticky md:top-24 md:self-start"
                   />
                 )}
                 <div className={`grid content-start gap-4 sm:grid-cols-2 ${c.mapa ? "" : "lg:grid-cols-4"}`}>
