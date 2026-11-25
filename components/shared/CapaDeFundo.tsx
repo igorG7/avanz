@@ -13,9 +13,9 @@ export function CapaDeFundo({ src }: { src: string }) {
         fill
         priority
         sizes="100vw"
-        className="object-cover opacity-50"
+        className="object-cover opacity-75"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/75 to-navy" />
+      <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-navy/55 to-navy" />
     </div>
   );
 }
