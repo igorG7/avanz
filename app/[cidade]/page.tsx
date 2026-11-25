@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloating } from "@/components/layout/WhatsAppFloating";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
-import { FAQ } from "@/components/shared/FAQ";
+import { FAQ, type FAQItem } from "@/components/shared/FAQ";
 import { FinalCTA } from "@/components/shared/FinalCTA";
 import { Icon } from "@/components/ui/Icon";
 import {
@@ -66,6 +66,7 @@ export default async function CidadePage({
     .filter((p): p is number => typeof p === "number");
   const outras = cidades.filter((o) => o.slug !== c.slug && o.publicado);
   const msg = `Olá! Vim pelo site da Avanz. Procuro lote em ${c.nome}.`;
+  const faq = [...(c.faq ?? []), ...perguntaLoteamentos(emps.map((e) => e.emp.nome))];
 
   const panorama = [
     emps.length && { rotulo: "Empreendimentos", valor: String(emps.length) },
@@ -265,13 +266,13 @@ export default async function CidadePage({
         />
 
         {/* 06 · Perguntas frequentes */}
-        {c.faq?.length ? (
+        {faq.length ? (
           <section className="bg-offwhite">
             <div className="container-content py-20">
               <span className="eyebrow">Perguntas frequentes</span>
               <h2 className="section-title mt-3">Dúvidas sobre lotes em {c.nome}</h2>
               <div className="mt-10 max-w-3xl">
-                <FAQ items={c.faq} />
+                <FAQ items={faq} />
               </div>
             </div>
           </section>
@@ -301,4 +302,20 @@ export default async function CidadePage({
       <WhatsAppFloating message={msg} />
     </>
   );
+}
+
+/**
+ * Montada a partir dos empreendimentos listados na página, para não ficar
+ * desatualizada quando entrar ou sair um loteamento.
+ */
+function perguntaLoteamentos(nomes: string[]): FAQItem[] {
+  if (!nomes.length) return [];
+  const lista = new Intl.ListFormat("pt-BR", { type: "conjunction" }).format(nomes);
+  const onde = nomes.length === 1 ? `no loteamento ${lista}` : `nos loteamentos ${lista}`;
+  return [
+    {
+      q: "Quais loteamentos têm lotes à venda?",
+      a: `Hoje a Avanz tem lotes ${onde}. Veja os lotes disponíveis na página de cada loteamento ou fale com um consultor para conhecer as opções do momento.`,
+    },
+  ];
 }
