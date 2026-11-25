@@ -27,8 +27,7 @@ export const cidades: Cidade[] = [
     slug: "mateus-leme",
     nome: "Mateus Leme",
     publicado: false,
-    // Rascunho tirado da landing do Estrela do Sul em 23/11/2026.
-    // Cada CONFIRMAR sai quando o item for validado; publicar só sem nenhum.
+    // Acessos e natureza confirmados pelo Igor em 25/11/2026.
     // Tempo até o centro de BH pelo Google Maps (23/11/2026).
     resumo:
       "Cidade da Região Metropolitana de Belo Horizonte, com clima de interior, a cerca de 1h30 de carro da capital.",
@@ -40,9 +39,11 @@ export const cidades: Cidade[] = [
         texto: "MG-050 duplicada, com vias marginais e ligação com a BR-381, a BR-262 e o Anel Rodoviário de Belo Horizonte.",
       },
       {
-        // CONFIRMAR: "lagoas na cidade" (a landing fala em quatro).
+        // Lagoas ficaram de fora: existem, mas não são pontos de lazer (Igor, 25/11/2026).
+        // A Serra pode ser citada como atrativo da cidade; o cuidado registrado na
+        // memória é não amarrar a marca de um empreendimento à imagem dela.
         titulo: "Natureza",
-        texto: "Clima de interior, áreas verdes e lagoas na cidade, para quem quer morar com mais tranquilidade sem se afastar da capital.",
+        texto: "A Serra do Elefante, Monumento Natural do município, tem mirante, trilhas e cachoeira. Aos pés da serra fica o Parque Ecológico Reserva da Serra.",
       },
       // Faltam: "Serviços" (escolas, saúde, comércio) e "Perfil de quem compra",
       // que o comercial conhece. "Crescimento" só com fonte.
