@@ -17,6 +17,8 @@ export type Empreendimento = {
   slug: string;
   nome: string;
   cidade: string;
+  /** Slug da página de cidade (lib/content/cidades.ts) a que ele pertence. */
+  cidadeSlug: string;
   /** Igual ao campo `development` dos imóveis na API, letra por letra. */
   development: string;
   /** Enquanto false, a página fica fora do sitemap e com noindex. */
@@ -49,6 +51,7 @@ export const empreendimentos: Empreendimento[] = [
     slug: "estrela-do-sul",
     nome: "Estrela do Sul",
     cidade: "Mateus Leme",
+    cidadeSlug: "mateus-leme",
     development: "Estrela do Sul",
     publicado: false,
     // Conteúdo tirado da landing estrela-do-sul.avanzimoveis.com.br e confirmado
@@ -161,6 +164,14 @@ export const empreendimentos: Empreendimento[] = [
 
 export function getEmpreendimento(slug: string): Empreendimento | undefined {
   return empreendimentos.find((e) => e.slug === slug);
+}
+
+/** Para o link "Conheça o empreendimento" na página do lote: só os publicados. */
+export function empreendimentoPublicadoDoLote(
+  development?: string,
+): Empreendimento | undefined {
+  if (!development) return undefined;
+  return empreendimentos.find((e) => e.publicado && e.development === development);
 }
 
 export const checklistCompraLote: { titulo: string; texto: string }[] = [

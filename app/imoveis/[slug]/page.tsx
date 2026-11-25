@@ -4,6 +4,7 @@ import { CatalogoIndisponivel } from "@/components/imoveis/CatalogoIndisponivel"
 import { ImovelDetalhe } from "@/components/imoveis/ImovelDetalhe";
 import { getPropertyBySlug, listProperties } from "@/lib/api/imoveis";
 import type { Property } from "@/lib/api/types";
+import { empreendimentoPublicadoDoLote } from "@/lib/content/empreendimentos";
 import { absoluteUrl, metaDescription } from "@/lib/site";
 import {
   RET_PARAM,
@@ -113,8 +114,14 @@ export default async function ImovelPage({
       similaresIntro="Selecionados pela consultoria Avanz, mesma região ou mesmo perfil."
       voltarHref={voltarHref}
       voltarLabel="Voltar para os imóveis"
+      empreendimento={linkEmpreendimento(imovel.development)}
     />
   );
+}
+
+function linkEmpreendimento(development?: string) {
+  const emp = empreendimentoPublicadoDoLote(development);
+  return emp ? { nome: emp.nome, href: `/empreendimentos/${emp.slug}` } : undefined;
 }
 
 async function carregarSimilares(imovel: Property) {

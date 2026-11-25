@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Hero } from "@/components/home/Hero";
 import { AvanzIdeia } from "@/components/home/AvanzIdeia";
+import { Cidades } from "@/components/home/Cidades";
 import { SobreNos } from "@/components/home/SobreNos";
 import { Pillars } from "@/components/shared/Pillars";
 import { Testimonials } from "@/components/shared/Testimonials";
@@ -74,6 +75,8 @@ export default async function Home() {
           ]}
           stats={[]}
         />
+
+        <Cidades />
 
         <AvanzIdeia />
 

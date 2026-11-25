@@ -9,10 +9,10 @@ import { ImoveisGrid } from "@/components/imoveis/ImoveisGrid";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { Testimonials } from "@/components/shared/Testimonials";
 import { FAQ } from "@/components/shared/FAQ";
+import { CapaDeFundo } from "@/components/shared/CapaDeFundo";
 import { FinalCTA } from "@/components/shared/FinalCTA";
 import { Icon } from "@/components/ui/Icon";
-import { listProperties } from "@/lib/api/imoveis";
-import type { Property } from "@/lib/api/types";
+import { cidadePath, cidadeVisivelPara } from "@/lib/content/cidades";
 import {
   checklistCompraLote,
   empreendimentos,
@@ -20,7 +20,12 @@ import {
   type Empreendimento,
 } from "@/lib/content/empreendimentos";
 import { depoimentos, processo } from "@/lib/content/institucional";
-import { formatArea, formatPreco, propertyToCard } from "@/lib/imoveis/view";
+import {
+  carregarLotes,
+  resumirLotes,
+  type ResumoLotes,
+} from "@/lib/imoveis/empreendimento";
+import { propertyToCard } from "@/lib/imoveis/view";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 type Params = { slug: string };
@@ -59,7 +64,14 @@ export default async function EmpreendimentoPage({
   if (!emp) notFound();
 
   const lotes = await carregarLotes(emp);
-  const resumo = montarResumo(emp, lotes);
+  const resumo = montarResumo(emp, resumirLotes(lotes));
+  const cidade = cidadeVisivelPara(emp);
+  const links = [
+    ...(cidade
+      ? [{ label: `Todos os lotes em ${cidade.nome}`, href: cidadePath(cidade) }]
+      : []),
+    ...(emp.links ?? []),
+  ];
   const msg = `Olá! Vim pelo site da Avanz. Quero saber dos lotes disponíveis no ${emp.nome}, em ${emp.cidade}.`;
 
   return (
@@ -68,24 +80,18 @@ export default async function EmpreendimentoPage({
       <main>
         {/* 01 · Hero + resumo */}
         <section className="relative isolate overflow-hidden bg-navy text-white">
-          {emp.capa && (
-            <div className="absolute inset-0 -z-10">
-              <Image
-                src={emp.capa}
-                alt=""
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover opacity-50"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/75 to-navy" />
-            </div>
-          )}
+          {emp.capa && <CapaDeFundo src={emp.capa} />}
           <div className="container-content py-16 sm:py-20">
             <nav aria-label="Trilha" className="text-xs text-white/60">
               <Link href="/" className="hover:text-white">Início</Link>
               {" › "}
-              <Link href="/imoveis" className="hover:text-white">Imóveis</Link>
+              {cidade ? (
+                <Link href={cidadePath(cidade)} className="hover:text-white">
+                  Lotes em {cidade.nome}
+                </Link>
+              ) : (
+                <Link href="/imoveis" className="hover:text-white">Imóveis</Link>
+              )}
               {" › "}
               <span className="text-white/80">{emp.nome}</span>
             </nav>
@@ -342,11 +348,11 @@ export default async function EmpreendimentoPage({
           ctaLabel="Falar no WhatsApp"
           ctaMessage={msg}
         />
-        {emp.links?.length ? (
+        {links.length ? (
           <nav aria-label="Veja também" className="bg-navy-3">
             <div className="container-content flex flex-wrap gap-x-6 gap-y-2 pb-10 text-sm text-white/70">
               <span className="text-white/50">Veja também:</span>
-              {emp.links.map((l) => (
+              {links.map((l) => (
                 <Link key={l.href} href={l.href} className="underline hover:text-white">
                   {l.label}
                 </Link>
@@ -361,50 +367,17 @@ export default async function EmpreendimentoPage({
   );
 }
 
-async function carregarLotes(emp: Empreendimento): Promise<Property[]> {
-  const res = await listProperties({
-    development: emp.development,
-    type: "lote",
-    status: "disponivel",
-    sort: "priceAsc",
-    limit: 50,
-  });
-  return res.ok ? res.data.items : [];
-}
-
-/** Números do resumo saem dos lotes cadastrados, nunca digitados à mão. */
-function montarResumo(emp: Empreendimento, lotes: Property[]) {
+function montarResumo(emp: Empreendimento, r: ResumoLotes) {
   const itens: { rotulo: string; valor: string }[] = [];
-  if (lotes.length) {
-    const areas = lotes.map((l) => l.area).filter((a) => a > 0);
-    const precos = lotes.map((l) => l.price).filter((p) => p > 0);
-    if (areas.length) {
-      const min = Math.min(...areas);
-      const max = Math.max(...areas);
-      itens.push({
-        rotulo: "Metragem",
-        valor: min === max ? formatArea(min)! : `${formatArea(min)} a ${formatArea(max)}`,
-      });
-    }
-    if (precos.length) {
-      itens.push({ rotulo: "A partir de", valor: formatPreco(Math.min(...precos)) });
-    }
-  }
+  if (r.metragem) itens.push({ rotulo: "Metragem", valor: r.metragem });
+  if (r.aPartirDe) itens.push({ rotulo: "A partir de", valor: r.aPartirDe });
   if (emp.condicoes?.entrada) {
     itens.push({ rotulo: "Entrada", valor: emp.condicoes.entrada });
   }
   itens.push({
     rotulo: "Lotes disponíveis",
-    valor: lotes.length ? String(lotes.length) : "Sob consulta",
+    valor: r.quantidade ? String(r.quantidade) : "Sob consulta",
   });
-  const atualizado = lotes
-    .map((l) => (l.updatedAt ? Date.parse(l.updatedAt) : NaN))
-    .filter(Number.isFinite);
-  if (atualizado.length) {
-    itens.push({
-      rotulo: "Atualizado em",
-      valor: new Date(Math.max(...atualizado)).toLocaleDateString("pt-BR"),
-    });
-  }
+  if (r.atualizadoEm) itens.push({ rotulo: "Atualizado em", valor: r.atualizadoEm });
   return itens;
 }
