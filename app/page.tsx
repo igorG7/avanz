@@ -13,7 +13,8 @@ import { faqItems } from "@/lib/content/faq";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloating } from "@/components/layout/WhatsAppFloating";
 import { listProperties } from "@/lib/api/imoveis";
-import type { Pillar, Depoimento } from "@/lib/content/types";
+import type { Pillar } from "@/lib/content/types";
+import { depoimentos, processo } from "@/lib/content/institucional";
 import { propertyToCard, type ImovelCardVM } from "@/lib/imoveis/view";
 
 export const metadata: Metadata = {
@@ -43,38 +44,6 @@ const pillars: Pillar[] = [
     icon: "file-check",
     title: "Consultoria sob demanda",
     body: "Análise mais profunda quando necessário, contratada separadamente.",
-  },
-];
-
-const process = [
-  {
-    icon: "headset" as const,
-    title: "Entender para atender",
-    body: "Você conta objetivo, região e necessidade. A Avanz organiza o cenário.",
-  },
-  {
-    icon: "compass" as const,
-    title: "Análise e proposta",
-    body: "Selecionamos opções e alinhamos expectativas: terreno, loteamento, MCMV ou médio/alto padrão.",
-  },
-  {
-    icon: "route" as const,
-    title: "Visita e decisão",
-    body: "Agendamos e acompanhamos. Sem surpresa no meio do caminho.",
-  },
-  {
-    icon: "file-check" as const,
-    title: "Condições e fechamento",
-    body: "Apresentamos as condições disponíveis e orientamos o fechamento com clareza.",
-  },
-];
-
-const depoimentos: Depoimento[] = [
-  {
-    quote:
-      "Tenho que agradecer muito a vocês, pois realmente enxergaram o que eu precisava e me conduziram até um lote que me conquistou e que atendia exatamente aos meus objetivos. Fui muito bem tratada e para mim isso conta muito, só agradecimentos!",
-    nome: "Cliente Avanz",
-    contexto: "compradora de lote",
   },
 ];
 
@@ -123,7 +92,7 @@ export default async function Home() {
           description="Quatro frentes que a Avanz entrega com consistência, uma delas é o que nos separa do mercado."
         />
 
-        <ProcessSteps steps={process} />
+        <ProcessSteps steps={processo} />
 
         <Testimonials depoimentos={depoimentos} />
 
