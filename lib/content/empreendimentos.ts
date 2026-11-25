@@ -142,7 +142,7 @@ export const empreendimentos: Empreendimento[] = [
       },
       {
         q: "Posso começar a construir logo após a compra?",
-        a: "Sim. Depois de assinar o contrato, você já pode começar a obra. Antes, aprove o projeto da casa na Prefeitura de Mateus Leme.",
+        a: "Sim. Depois de assinar o contrato, você já pode começar a obra.",
       },
       {
         q: "Os lotes perto da área industrial servem para negócio?",
