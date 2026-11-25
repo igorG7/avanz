@@ -222,10 +222,10 @@ export default async function EmpreendimentoPage({
             <div className="container-content py-20">
               <span className="eyebrow">Fotos</span>
               <h2 className="section-title mt-3">O {emp.nome} por dentro</h2>
-              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-10 grid gap-4 sm:grid-cols-2">
                 {emp.fotos.map((f) => (
-                  <div key={f.src} className="relative aspect-[4/3] overflow-hidden rounded-card">
-                    <Image src={f.src} alt={f.alt} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+                  <div key={f.src} className="relative aspect-[16/10] overflow-hidden rounded-card">
+                    <Image src={f.src} alt={f.alt} fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" />
                   </div>
                 ))}
               </div>
