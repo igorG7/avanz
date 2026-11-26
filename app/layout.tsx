@@ -1,20 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import { unstable_ViewTransition as ViewTransition } from "react";
 import { SITE_NAME, SITE_URL, organizationJsonLd } from "@/lib/site";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
+// Font files live in the repo (variable, latin subset, from Fontsource 5.3.0)
+// so the build never downloads from Google; that download failed intermittently.
+const inter = localFont({
+  src: "./fonts/inter.woff2",
+  weight: "100 900",
   display: "swap",
   variable: "--font-inter",
 });
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
+const montserrat = localFont({
+  src: "./fonts/montserrat.woff2",
+  weight: "100 900",
   display: "swap",
   variable: "--font-montserrat",
-  weight: ["500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
