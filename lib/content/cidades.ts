@@ -30,10 +30,11 @@ export const cidades: Cidade[] = [
     nome: "Mateus Leme",
     publicado: false,
     // Acessos e natureza confirmados pelo Igor em 25/11/2026.
-    // Tempo até o centro de BH pelo Google Maps (23/11/2026).
+    // Tempo até o centro de BH pelo Google Maps, a partir do Santa Clara, perto
+    // do centro da cidade (print do Igor, 27/11/2026: 1h13, 58,8 km).
     resumo:
-      "Cidade da Região Metropolitana de Belo Horizonte, com clima de interior, a cerca de 1h30 de carro da capital.",
-    tempoAteBH: "Cerca de 1h30 de carro",
+      "Cidade da Região Metropolitana de Belo Horizonte, com clima de interior, a cerca de 1h15 de carro da capital.",
+    tempoAteBH: "Cerca de 1h15 de carro",
     capa: "/images/cidades/mateus-leme/vista-montanhas.webp",
     mapa: "Mateus Leme MG",
     sobre: [
@@ -69,13 +70,16 @@ export const cidades: Cidade[] = [
         texto: "Entre os Censos de 2010 e 2022, a população de Mateus Leme passou de 27.856 para 37.841 habitantes, um crescimento de 36%. No mesmo período, Minas Gerais cresceu 5%. Fonte: IBGE.",
       },
     ],
-    // Pergunta de financiamento direto com o loteador espera a resposta do Ivan
-    // sobre "sem análise bancária". A dos loteamentos à venda é montada pela
-    // página a partir dos empreendimentos da cidade; não repetir aqui.
+    // As perguntas dos loteamentos à venda e da escritura e registro são
+    // montadas pela página a partir dos empreendimentos da cidade; não repetir aqui.
     faq: [
       {
         q: "Quanto tempo leva de Mateus Leme até Belo Horizonte?",
-        a: "Cerca de 1h30 de carro até o centro de BH, pela BR-262 ou pela BR-381.",
+        a: "Cerca de 1h15 de carro até o centro de BH, pela BR-262 ou pela BR-381.",
+      },
+      {
+        q: "Preciso de aprovação do banco para comprar lote em Mateus Leme?",
+        a: "Nos loteamentos atendidos pela Avanz em Mateus Leme, o pagamento é feito direto com a loteadora, sem análise de banco. A aprovação bancária só é necessária em compras pelo Minha Casa, Minha Vida.",
       },
       {
         q: "A cidade tem hospital e escolas?",
