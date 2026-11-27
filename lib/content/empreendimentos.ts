@@ -59,6 +59,8 @@ export const empreendimentos: Empreendimento[] = [
     cidadeSlug: "mateus-leme",
     development: "Estrela do Sul",
     publicado: false,
+    // Escritura e registro confirmados pelo Igor em 27/11/2026.
+    escrituraERegistro: true,
     // Conteúdo tirado da landing estrela-do-sul.avanzimoveis.com.br e confirmado
     // item a item com o Igor em 23/11/2026.
     beneficio:
