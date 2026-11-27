@@ -47,6 +47,8 @@ export type Empreendimento = {
   };
   faq?: FAQItem[];
   links?: { label: string; href: string }[];
+  /** Escritura e registro do loteamento confirmados; só então a página da cidade o cita. */
+  escrituraERegistro?: boolean;
 };
 
 export const empreendimentos: Empreendimento[] = [
@@ -138,6 +140,11 @@ export const empreendimentos: Empreendimento[] = [
     },
     faq: [
       {
+        // Confirmado pelo Igor em 27/11/2026: banco só entra no Minha Casa, Minha Vida.
+        q: "Preciso de aprovação do banco para comprar?",
+        a: "Não. O pagamento é feito direto com a loteadora, sem análise de banco. A aprovação bancária só é necessária em compras pelo Minha Casa, Minha Vida.",
+      },
+      {
         q: "Posso usar FGTS na compra do lote?",
         a: "Como o pagamento é feito direto com a loteadora, o FGTS não entra na compra do lote. Depois de quitar o lote, o FGTS pode ser usado na construção, junto com financiamento bancário. O consultor explica o seu caso.",
       },
@@ -170,6 +177,8 @@ export const empreendimentos: Empreendimento[] = [
     cidadeSlug: "mateus-leme",
     development: "Santa Clara",
     publicado: false,
+    // "Escritura e registro em ordem", da landing; citado na página da cidade (Igor, 27/11/2026).
+    escrituraERegistro: true,
     // Conteúdo tirado da landing santa-clara (igorG7/avanz-imoveis) e confirmado
     // item a item com o Igor em 27/11/2026. Ficou de fora o apelo de escassez
     // ("pré-lançamento", "apenas 20 unidades", "prioridade na escolha").

@@ -68,7 +68,11 @@ export default async function CidadePage({
     .filter((p): p is number => typeof p === "number");
   const outras = cidades.filter((o) => o.slug !== c.slug && o.publicado);
   const msg = `Olá! Vim pelo site da Avanz. Procuro lote em ${c.nome}.`;
-  const faq = [...(c.faq ?? []), ...perguntaLoteamentos(emps.map((e) => e.emp.nome))];
+  const faq = [
+    ...(c.faq ?? []),
+    ...perguntaLoteamentos(emps.map((e) => e.emp.nome)),
+    ...perguntaDocumentacao(emps.filter((e) => e.emp.escrituraERegistro).map((e) => e.emp.nome)),
+  ];
 
   const panorama = [
     emps.length && { rotulo: "Empreendimentos", valor: String(emps.length) },
@@ -324,14 +328,33 @@ export default async function CidadePage({
  * Montada a partir dos empreendimentos listados na página, para não ficar
  * desatualizada quando entrar ou sair um loteamento.
  */
+function listar(nomes: string[]): string {
+  return new Intl.ListFormat("pt-BR", { type: "conjunction" }).format(nomes);
+}
+
 function perguntaLoteamentos(nomes: string[]): FAQItem[] {
   if (!nomes.length) return [];
-  const lista = new Intl.ListFormat("pt-BR", { type: "conjunction" }).format(nomes);
+  const lista = listar(nomes);
   const onde = nomes.length === 1 ? `no loteamento ${lista}` : `nos loteamentos ${lista}`;
   return [
     {
       q: "Quais loteamentos têm lotes à venda?",
       a: `Hoje a Avanz tem lotes ${onde}. Veja os lotes disponíveis na página de cada loteamento ou fale com um consultor para conhecer as opções do momento.`,
+    },
+  ];
+}
+
+/** Cita pelo nome só os loteamentos com escritura e registro confirmados. */
+function perguntaDocumentacao(nomes: string[]): FAQItem[] {
+  if (!nomes.length) return [];
+  const quem =
+    nomes.length === 1
+      ? `O loteamento ${nomes[0]} tem`
+      : `Os loteamentos ${listar(nomes)} têm`;
+  return [
+    {
+      q: "Os lotes têm escritura e registro?",
+      a: `${quem} escritura e registro em ordem. Durante o pagamento, você assina um contrato particular de compra e venda, e a escritura passa para o seu nome após a quitação do lote.`,
     },
   ];
 }
