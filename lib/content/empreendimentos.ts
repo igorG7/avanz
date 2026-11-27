@@ -6,8 +6,9 @@ import type { IconName } from "@/components/ui/Icon";
  * carteira própria pela API, filtrados por `development`.
  *
  * Regras (combinadas com o comercial em 17/11/2026):
- * - infraestrutura lista só o que já existe no local; item faltante ou parcial
- *   não entra;
+ * - infraestrutura lista o que já existe no local; obra em andamento entra só
+ *   com o estado escrito ("em implantação", "em construção"), para mostrar o
+ *   bairro se desenvolvendo (Igor, 27/11/2026); o que não começou não entra;
  * - condições mostram entrada, parcela e prazo, sem juros nem reajuste;
  * - campo vazio esconde a seção; nunca preencher com texto genérico.
  */
@@ -35,6 +36,8 @@ export type Empreendimento = {
   infraestrutura?: ItemFicha[];
   terreno?: ItemFicha[];
   fotos?: { src: string; alt: string }[];
+  /** Vídeo de drone mostrado acima das fotos; HEVC é opcional e mais leve. */
+  video?: { mp4: string; hevc?: string; poster: string };
   condicoes?: {
     entrada?: string;
     parcelas?: string;
@@ -153,6 +156,123 @@ export const empreendimentos: Empreendimento[] = [
       {
         q: "Os lotes perto da área industrial servem para negócio?",
         a: "A área industrial próxima está em desenvolvimento, e os lotes ao redor podem servir para galpão, comércio de bairro ou investimento. Confira o zoneamento na Prefeitura de Mateus Leme conforme a finalidade.",
+      },
+      {
+        q: "Como funciona a visita?",
+        a: "Agendamos pelo WhatsApp. Um consultor acompanha você até o lote, mostra a infraestrutura e a vizinhança e tira dúvidas no local, sem compromisso de compra.",
+      },
+    ],
+  },
+  {
+    slug: "santa-clara",
+    nome: "Santa Clara",
+    cidade: "Mateus Leme",
+    cidadeSlug: "mateus-leme",
+    development: "Santa Clara",
+    publicado: false,
+    // Conteúdo tirado da landing santa-clara (igorG7/avanz-imoveis) e confirmado
+    // item a item com o Igor em 27/11/2026. Ficou de fora o apelo de escassez
+    // ("pré-lançamento", "apenas 20 unidades", "prioridade na escolha").
+    beneficio:
+      "Lotes de 180 a 200 m² no bairro Santa Clara, em Mateus Leme, com água, energia e fibra óptica.",
+    capa: "/images/empreendimentos/santa-clara/santa-clara-12.webp",
+    localizacao: {
+      // Coordenadas do mapa da landing; o nome do bairro sozinho é ambíguo no Maps.
+      mapa: "-19.989193,-44.403499",
+      // Rotas do Google Maps enviadas pelo Igor em 27/11/2026, até o centro de cada cidade.
+      distancias: [
+        {
+          titulo: "9 minutos do centro de Mateus Leme",
+          detalhe: "Cerca de 3,3 km, até comércio, escolas e serviços.",
+        },
+        { titulo: "3 minutos da MG-050" },
+        {
+          titulo: "Cerca de 26 km de Betim",
+          detalhe: "Pela BR-262 e Rodovia Newton Penido, cerca de 30 minutos.",
+        },
+        {
+          titulo: "Cerca de 59 km de Belo Horizonte",
+          detalhe: "Pela BR-381 e BR-262, cerca de 1h15 de carro.",
+        },
+      ],
+    },
+    infraestrutura: [
+      { texto: "Água Copasa", icone: "droplet" },
+      { texto: "Energia Cemig", icone: "bolt" },
+      { texto: "Internet por fibra óptica", icone: "wifi" },
+      { texto: "Posto de saúde e CRAS na região", icone: "shield" },
+      { texto: "Rede de esgoto em implantação", icone: "check" },
+      { texto: "Creche e escola em construção no bairro", icone: "building" },
+    ],
+    // Os lotes à venda hoje são de uma quadra com desnível: leve declive na rua
+    // de cima e leve aclive na de baixo. "Planos" cobre lotes de outras quadras
+    // que voltem à venda (Igor, 27/11/2026).
+    terreno: [
+      { texto: "Lotes em leve declive, em leve aclive e planos", icone: "mountain" },
+      { texto: "Bairro residencial já ocupado, com comércio local", icone: "users" },
+      { texto: "Bairro aberto, sem condomínio", icone: "map" },
+    ],
+    // Só fotos com o terreno já limpo e estaqueado. De fora: as de antes da
+    // terraplanagem e o drone-poster original (marca d'água "movavi").
+    fotos: [
+      {
+        src: "/images/empreendimentos/santa-clara/santa-clara-10.webp",
+        alt: "Vista aérea dos lotes do Santa Clara demarcados, com as casas do bairro ao lado",
+      },
+      {
+        src: "/images/empreendimentos/santa-clara/santa-clara-9.webp",
+        alt: "Lotes do Santa Clara estaqueados junto à rua, com o bairro e as serras ao fundo",
+      },
+      {
+        src: "/images/empreendimentos/santa-clara/santa-clara-13.webp",
+        alt: "Lotes do Santa Clara vistos de perto, com a rua e as casas vizinhas",
+      },
+      {
+        src: "/images/empreendimentos/santa-clara/santa-clara-11.webp",
+        alt: "Detalhe aéreo da demarcação dos lotes do Santa Clara ao longo da rua",
+      },
+      {
+        src: "/images/empreendimentos/santa-clara/santa-clara-14.webp",
+        alt: "Quadra do Santa Clara com os lotes estaqueados e as moradias do bairro ao fundo",
+      },
+      {
+        src: "/images/empreendimentos/santa-clara/santa-clara-15.webp",
+        alt: "Divisas dos lotes do Santa Clara marcadas com estacas e arame",
+      },
+    ],
+    video: {
+      mp4: "/videos/empreendimentos/santa-clara/drone.mp4",
+      hevc: "/videos/empreendimentos/santa-clara/drone-hevc.mp4",
+      poster: "/images/empreendimentos/santa-clara/drone-poster.webp",
+    },
+    // Os lotes de esquina parcelam a entrada em até 5x; fica fora da página por
+    // decisão comercial (17/09/2026) e o consultor informa no atendimento.
+    condicoes: {
+      entrada: "Em até 10x",
+      parcelas: "De R$ 950 a R$ 1.350",
+      validoEm: "27/11/2026",
+    },
+    faq: [
+      {
+        // Confirmado pelo Igor em 27/11/2026: banco só entra no Minha Casa, Minha Vida.
+        q: "Preciso de aprovação do banco para comprar?",
+        a: "Não. O pagamento é feito direto com a loteadora, sem análise de banco. A aprovação bancária só é necessária em compras pelo Minha Casa, Minha Vida.",
+      },
+      {
+        q: "Posso usar FGTS na compra do lote?",
+        a: "Como o pagamento é feito direto com a loteadora, o FGTS não entra na compra do lote. Depois de quitar o lote, o FGTS pode ser usado na construção, junto com financiamento bancário. O consultor explica o seu caso.",
+      },
+      {
+        q: "Quando a escritura sai no meu nome?",
+        a: "Durante o pagamento, você assina um contrato particular de compra e venda. A escritura é transferida para o seu nome após a quitação total do lote.",
+      },
+      {
+        q: "Tem taxa de condomínio?",
+        a: "Não. O Santa Clara é um bairro aberto, sem mensalidade de condomínio. O IPTU é cobrado pela Prefeitura de Mateus Leme conforme o tamanho do lote.",
+      },
+      {
+        q: "Posso começar a construir logo após a compra?",
+        a: "Sim. Depois de assinar o contrato, você já pode começar a obra.",
       },
       {
         q: "Como funciona a visita?",

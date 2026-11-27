@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloating } from "@/components/layout/WhatsAppFloating";
 import { ImoveisGrid } from "@/components/imoveis/ImoveisGrid";
+import { LazyVideo } from "@/components/shared/LazyVideo";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { Testimonials } from "@/components/shared/Testimonials";
 import { FAQ } from "@/components/shared/FAQ";
@@ -236,13 +237,18 @@ export default async function EmpreendimentoPage({
         )}
 
         {/* 05 · Fotos */}
-        {emp.fotos?.length ? (
+        {emp.fotos?.length || emp.video ? (
           <section className="bg-white">
             <div className="container-content py-20">
               <span className="eyebrow">Fotos</span>
               <h2 className="section-title mt-3">O {emp.nome} por dentro</h2>
-              <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                {emp.fotos.map((f) => (
+              {emp.video && (
+                <div className="mt-10">
+                  <LazyVideo {...emp.video} />
+                </div>
+              )}
+              <div className={`${emp.video ? "mt-4" : "mt-10"} grid gap-4 sm:grid-cols-2`}>
+                {emp.fotos?.map((f) => (
                   <div key={f.src} className="relative aspect-[16/10] overflow-hidden rounded-card">
                     <Image src={f.src} alt={f.alt} fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" />
                   </div>
